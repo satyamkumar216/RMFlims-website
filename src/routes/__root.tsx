@@ -77,10 +77,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#0a0a0a" },
-      { title: "Raunakmanna Films" },
-      { name: "description", content: "Premium film production & photography agency — model cinematography, post-production and cinematic wedding films." },
+      { name: "theme-color", content: "#ebe4d4" },
+      { title: "Raunakmanna Films — Wedding Cinematography & Photography" },
+      { name: "description", content: "Raunakmanna Films — heirloom wedding films and bridal photography. Cream, ink, and a single thread of red." },
       { property: "og:type", content: "website" },
+      { property: "og:title", content: "Raunakmanna Films" },
+      { property: "og:description", content: "Heirloom wedding films & bridal photography." },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -88,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Dancing+Script:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap",
       },
       {
         rel: "stylesheet",
