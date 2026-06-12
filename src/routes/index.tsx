@@ -18,6 +18,7 @@ import manifestoLeft from "@/assets/manifesto-left.png";
 import manifestoRight from "@/assets/manifesto-right.png";
 import manifestoBoat from "@/assets/manifesto-boat.png";
 import manifestoCouple from "@/assets/manifesto-couple.png";
+import heroBride from "@/assets/hero-bride.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -299,12 +300,14 @@ function Services() {
 
 /* ---------------- PORTFOLIO ---------------- */
 const works = [
-  { src: p1, title: "Silver Halide", meta: "Editorial · 2025", w: 1024, h: 1280, span: "md:col-span-4 aspect-[4/5]" },
-  { src: p2, title: "Anika & Rohan", meta: "Wedding Film · 2025", w: 1600, h: 1024, span: "md:col-span-4 aspect-[4/5]" },
-  { src: p3, title: "Behind the Set", meta: "Documentary · 2024", w: 1024, h: 1024, span: "md:col-span-4 aspect-[4/5]" },
-  { src: p4, title: "Crimson Veil", meta: "Bridal · 2025", w: 1024, h: 1400, span: "md:col-span-4 aspect-[4/5]" },
-  { src: p5, title: "Weightless", meta: "Fashion Film · 2024", w: 1400, h: 1024, span: "md:col-span-4 aspect-[4/5]" },
-  { src: p6, title: "Last Light", meta: "Wedding · 2024", w: 1024, h: 1280, span: "md:col-span-4 aspect-[4/5]" },
+  { src: p1, title: "Silver Halide", meta: "Editorial · 2025", w: 1024, h: 1280 },
+  { src: p2, title: "Anika & Rohan", meta: "Wedding Film · 2025", w: 1600, h: 1024 },
+  { src: p3, title: "Behind the Set", meta: "Documentary · 2024", w: 1024, h: 1024 },
+  { src: p4, title: "Crimson Veil", meta: "Bridal · 2025", w: 1024, h: 1400 },
+  { src: p5, title: "Weightless", meta: "Fashion Film · 2024", w: 1400, h: 1024 },
+  { src: p6, title: "Last Light", meta: "Wedding · 2024", w: 1024, h: 1280 },
+  { src: heroBride, title: "Golden Hour Bride", meta: "Bridal · 2025", w: 1024, h: 1350 },
+  { src: manifestoCouple, title: "Sacred Tapestry", meta: "Weddings · 2025", w: 1600, h: 1024 }
 ];
 
 function Portfolio() {
@@ -321,48 +324,58 @@ function Portfolio() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeIdx]);
 
+  const gridItems = [
+    { type: "image", ...works[0], originalIndex: 0 },
+    { type: "image", ...works[1], originalIndex: 1 },
+    { type: "image", ...works[2], originalIndex: 2 },
+    { type: "image", ...works[3], originalIndex: 3 },
+    { type: "center-card" },
+    { type: "image", ...works[4], originalIndex: 4 },
+    { type: "image", ...works[5], originalIndex: 5 },
+    { type: "image", ...works[6], originalIndex: 6 },
+    { type: "image", ...works[7], originalIndex: 7 },
+  ];
+
   return (
     <section id="gallery" className="relative px-6 py-28 md:px-12 md:py-40">
       <div className="mx-auto max-w-[1500px]">
-        <div className="mb-14 flex items-end justify-between gap-6 md:mb-20">
-          <Reveal>
-            <p className="text-[10px] uppercase tracking-[0.4em] text-foreground/55">— 03 / Gallery</p>
-            <h2 className="mt-4 font-display text-5xl font-medium leading-[0.95] tracking-tight md:text-8xl">
-              <MaskReveal>Selected</MaskReveal>
-              <br />
-              <MaskReveal delay={120}><span className="italic font-medium text-brand">work.</span></MaskReveal>
-            </h2>
-          </Reveal>
-          <Reveal delay={200} className="hidden text-right text-xs uppercase tracking-[0.3em] text-foreground/55 md:block">
-            <p>Frames from</p>
-            <p className="text-foreground">2024 — 2025</p>
-          </Reveal>
-        </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-6">
-          {works.map((w, i) => (
-            <PortfolioItem
-              key={i}
-              src={w.src}
-              title={w.title}
-              meta={w.meta}
-              width={w.w}
-              height={w.h}
-              speed={0.1 + (i % 3) * 0.05}
-              className={w.span}
-              onClick={() => setActiveIdx(i)}
-            />
-          ))}
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+          {gridItems.map((item, i) => {
+            if (item.type === "center-card") {
+              return (
+                <div 
+                  key="center-card" 
+                  className="flex flex-col items-center justify-center p-8 bg-ink text-cream rounded-2xl shadow-lg aspect-[4/5] text-center border border-foreground/10 paper-grain col-span-1 sm:col-span-2 md:col-span-1"
+                >
+                  <span className="text-[10px] uppercase tracking-[0.4em] text-cream/45 mb-3">— Showcase</span>
+                  <h3 className="font-sans text-3xl sm:text-4xl font-extrabold tracking-[0.15em] text-cream uppercase leading-none">
+                    OUR WORK
+                  </h3>
+                  <Link
+                    to="/gallery"
+                    className="font-sans text-[11px] uppercase tracking-[0.25em] text-brand hover:text-brand/80 transition-colors duration-300 mt-6 border-b border-brand/30 pb-1"
+                    data-cursor="hover"
+                  >
+                    view full gallery
+                  </Link>
+                </div>
+              );
+            }
 
-        {/* View Full Gallery redirect link */}
-        <div className="mt-16 flex justify-center">
-          <Link
-            to="/gallery"
-            className="group inline-flex items-center gap-3 font-display text-lg uppercase tracking-[0.3em] text-foreground hover:text-brand transition-colors duration-300 border-b border-foreground/25 pb-1 hover:border-brand"
-          >
-            <span>View Full Gallery</span>
-            <span className="text-brand transition-transform duration-300 group-hover:translate-x-1.5">⟶</span>
-          </Link>
+            return (
+              <PortfolioItem
+                key={i}
+                src={item.src!}
+                title={item.title!}
+                meta={item.meta!}
+                width={item.w!}
+                height={item.h!}
+                speed={0.1 + (i % 3) * 0.05}
+                className="aspect-[4/5]"
+                onClick={() => setActiveIdx(item.originalIndex!)}
+              />
+            );
+          })}
         </div>
       </div>
 
