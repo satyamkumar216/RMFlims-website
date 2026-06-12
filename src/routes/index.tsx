@@ -1,27 +1,34 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
 import { CustomCursor } from "@/components/CustomCursor";
 import { PortfolioItem } from "@/components/PortfolioItem";
 import { Reveal, MaskReveal } from "@/components/Reveal";
 import { UnderlineLink } from "@/components/UnderlineLink";
+import { Footer } from "@/components/Footer";
 
-import heroBride from "@/assets/hero-bride.jpg";
+import heroImage from "@/assets/hero.png";
 import p1 from "@/assets/portfolio-1.jpg";
 import p2 from "@/assets/portfolio-2.jpg";
 import p3 from "@/assets/portfolio-3.jpg";
 import p4 from "@/assets/portfolio-4.jpg";
 import p5 from "@/assets/portfolio-5.jpg";
 import p6 from "@/assets/portfolio-6.jpg";
+import logo from "@/assets/logo-removebg-preview.png";
+import manifestoLeft from "@/assets/manifesto-left.png";
+import manifestoRight from "@/assets/manifesto-right.png";
+import manifestoBoat from "@/assets/manifesto-boat.png";
+import manifestoCouple from "@/assets/manifesto-couple.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Raunakmanna Films — Wedding Cinematography & Photography" },
+      { title: "Rounakmanna Films — Wedding Cinematography & Photography" },
       {
         name: "description",
         content:
-          "Raunakmanna Films crafts heirloom wedding films and bridal photography — quiet, cinematic, deeply Indian.",
+          "Rounakmanna Films crafts heirloom wedding films and bridal photography — quiet, cinematic, deeply Indian.",
       },
-      { property: "og:title", content: "Raunakmanna Films" },
+      { property: "og:title", content: "Rounakmanna Films" },
       {
         property: "og:description",
         content: "Heirloom wedding films & bridal photography.",
@@ -41,6 +48,7 @@ function Home() {
       <About />
       <Services />
       <Portfolio />
+      <SoulCinema />
       <Contact />
       <Footer />
       <WhatsAppFab />
@@ -52,35 +60,46 @@ function Home() {
 function TopNav() {
   return (
     <header className="relative z-30 flex items-center justify-between gap-6 px-6 pt-6 md:px-12 md:pt-8">
-      <a href="#top" className="flex items-baseline gap-1 leading-none">
-        <span className="font-script text-4xl font-bold tracking-tight text-brand md:text-5xl">RM</span>
-        <span className="font-script text-lg italic text-foreground/80 md:text-xl">flims</span>
+      <a href="#top" className="flex items-center gap-2" data-cursor="hover">
+        <img
+          src={logo}
+          alt="Rounakmanna Films Logo"
+          className="h-20 md:h-28 w-auto object-contain"
+        />
       </a>
 
-      <nav className="hidden md:flex items-center gap-16 lg:gap-24">
-        {["Gallery", "Review", "Broucher"].map((l) => (
-          <a
-            key={l}
-            href={`#${l.toLowerCase()}`}
-            data-cursor="hover"
-            className="font-script text-2xl text-foreground/85 transition-colors hover:text-brand"
-          >
-            {l}
-          </a>
-        ))}
+      <nav className="hidden md:flex items-center gap-12 lg:gap-16 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        {["Gallery", "Review", "Broucher"].map((l) => {
+          if (l === "Gallery") {
+            return (
+              <Link
+                key={l}
+                to="/gallery"
+                data-cursor="hover"
+                className="font-display text-xl text-foreground/85 transition-colors hover:text-brand"
+              >
+                {l}
+              </Link>
+            );
+          }
+          return (
+            <a
+              key={l}
+              href={`#${l.toLowerCase()}`}
+              data-cursor="hover"
+              className="font-display text-xl text-foreground/85 transition-colors hover:text-brand"
+            >
+              {l}
+            </a>
+          );
+        })}
       </nav>
 
-      <div className="flex items-center gap-5 md:gap-7">
-        <a
-          href="#broucher"
-          className="hidden font-script text-2xl italic text-foreground/85 transition-colors hover:text-brand md:inline-block"
-        >
-          Broucher
-        </a>
+      <div className="flex items-center">
         <a
           href="#contact"
           data-cursor="hover"
-          className="font-script rounded-full bg-brand px-6 py-2 text-xl text-primary-foreground shadow-sm transition-transform hover:-translate-y-0.5 md:px-7 md:text-2xl"
+          className="font-display rounded-full bg-brand px-6 py-2 text-lg text-primary-foreground shadow-sm transition-transform hover:-translate-y-0.5 md:px-7 md:text-xl"
         >
           Contact Us
         </a>
@@ -95,23 +114,23 @@ function Hero() {
     <section className="relative mx-auto mt-6 w-full max-w-[1760px] px-3 md:mt-8 md:px-8">
       <div className="relative h-[78svh] min-h-[560px] w-full overflow-hidden">
         <img
-          src={heroBride}
-          alt="Bride at her wedding — Raunakmanna Films"
+          src={heroImage}
+          alt="Rounakmanna Films Hero Image"
           width={1920}
           height={1280}
           className="h-full w-full object-cover [filter:grayscale(100%)_contrast(1.05)]"
         />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,oklch(0.18_0.005_60/0.35)_100%)]" />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
-          <h1 className="hero-breathe font-display text-[11vw] font-medium leading-[0.9] tracking-tight text-cream drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)] md:text-[8.5vw]">
-            <MaskReveal delay={150}>RAUNAKMANNA</MaskReveal>
+          <h1 className="hero-breathe font-display text-[11vw] font-medium leading-[0.8] tracking-tight text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)] md:text-[8.5vw]">
+            <MaskReveal delay={150}>ROUNAKMANNA</MaskReveal>
           </h1>
-          <div className="mt-2 flex w-full items-center justify-center gap-4 md:mt-3 md:gap-8">
-            <span className="h-px w-16 bg-foreground md:w-28" />
-            <span className="flims-in font-display text-[10vw] font-medium italic tracking-[0.18em] text-brand md:text-[6.5vw]">
-              FLIMS
+          <div className="relative -mt-[5vw] flex w-full items-center justify-center gap-4 md:-mt-[4vw] md:gap-8 z-10 px-4">
+            <span className="h-px flex-1 max-w-[15vw] md:max-w-[25vw] bg-foreground/60" />
+            <span className="films-in font-display text-[10vw] font-medium italic tracking-[0.18em] text-brand md:text-[6.5vw] drop-shadow-[0_2px_12px_rgba(0,0,0,0.3)]">
+              FILMS
             </span>
-            <span className="h-px w-16 bg-foreground md:w-28" />
+            <span className="h-px flex-1 max-w-[15vw] md:max-w-[25vw] bg-foreground/60" />
           </div>
         </div>
       </div>
@@ -142,36 +161,39 @@ function Marquee() {
 /* ---------------- ABOUT ---------------- */
 function About() {
   return (
-    <section id="about" className="relative px-6 py-28 md:px-16 md:py-40">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-12 md:gap-16">
-        <Reveal className="md:col-span-3">
+    <section id="about" className="relative overflow-hidden px-6 py-28 md:px-16 md:py-40">
+      {/* Background illustrations */}
+      <Reveal delay={200} className="absolute left-0 bottom-0 z-0 w-[38%] max-w-[220px] md:w-[30%] md:max-w-[360px] lg:max-w-[420px] min-w-[140px] pointer-events-none select-none mix-blend-multiply opacity-25 md:opacity-90 transition-opacity">
+        <img src={manifestoLeft} alt="" className="w-full object-contain" />
+      </Reveal>
+      
+      <Reveal delay={300} className="absolute right-0 bottom-0 z-0 w-[38%] max-w-[220px] md:w-[30%] md:max-w-[360px] lg:max-w-[420px] min-w-[140px] pointer-events-none select-none mix-blend-multiply opacity-25 md:opacity-90 transition-opacity">
+        <img src={manifestoRight} alt="" className="w-full object-contain" />
+      </Reveal>
+
+      <Reveal delay={450} className="absolute right-[5%] top-[12%] md:top-[15%] z-0 w-[12%] max-w-[100px] min-w-[50px] pointer-events-none select-none mix-blend-multiply opacity-20 md:opacity-85 transition-opacity animate-pulse">
+        <img src={manifestoBoat} alt="" className="w-full object-contain" />
+      </Reveal>
+
+      <div className="mx-auto max-w-4xl relative z-10 flex flex-col items-center">
+        <Reveal className="mb-10">
           <p className="text-[10px] uppercase tracking-[0.4em] text-foreground/55">— 01 / Manifesto</p>
         </Reveal>
-        <div className="md:col-span-9">
-          <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight md:text-7xl">
-            <MaskReveal>We chase the unrehearsed —</MaskReveal>
-            <br />
-            <MaskReveal delay={120}>
-              <span className="text-foreground/60">
-                a stolen glance, an heirloom passed, the half-second before a vow.
-              </span>
-            </MaskReveal>
-            <br />
-            <MaskReveal delay={240}>
-              <span className="italic font-medium text-brand">Then we cut it like cinema.</span>
-            </MaskReveal>
-          </h2>
-          <Reveal delay={400} className="mt-12 grid grid-cols-1 gap-8 text-sm leading-relaxed text-foreground/70 md:grid-cols-2 md:text-base">
-            <p>
-              Raunakmanna Films is a director-led wedding & portrait studio. We treat every frame
-              like a still you would frame on a wall — restrained in composition, rich in feeling.
-            </p>
-            <p>
-              From the soft hum of haldi mornings to the cinematic still of the final pheras, we
-              shoot stories that look like memory.
-            </p>
-          </Reveal>
-        </div>
+
+        <h2 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5vw] font-medium leading-[1.15] tracking-[0.02em] text-foreground text-center">
+          <MaskReveal>ANCIENT BENGALI SPIRIT</MaskReveal>
+          <br />
+          <MaskReveal delay={150}>
+            <span className="font-display italic lowercase tracking-normal font-light text-3xl sm:text-5xl md:text-6xl lg:text-[4.5vw] mr-3 md:mr-4">in a</span>
+            MODERN FRAME
+          </MaskReveal>
+        </h2>
+
+        <Reveal delay={300} className="mt-12 max-w-2xl text-center">
+          <p className="font-display text-base sm:text-lg md:text-[21px] leading-[1.6] text-foreground/80 tracking-wide font-light">
+            At our studio, our theme is rooted in the delicate balance between timeless heritage and cutting-edge artistry. We are dedicated to preserving the rich, vibrant spirit of Bengali culture—its profound storytelling, emotional depth, and intricate traditions—while elevating it through modern, cinematic editing techniques. By seamlessly blending classic cultural sensibilities with contemporary visual frameworks, our goal is to craft compelling narratives where the age-old soul of Bengal is perfectly captured and celebrated within a dynamic, modern frame.
+          </p>
+        </Reveal>
       </div>
     </section>
   );
@@ -179,9 +201,46 @@ function About() {
 
 /* ---------------- SERVICES ---------------- */
 const services = [
-  { n: "01", title: "Wedding Films", body: "Cinema-first wedding storytelling. Documentary at heart, directed with intent.", tags: ["Feature Film", "Highlight Reel", "Stills"] },
-  { n: "02", title: "Bridal Portraits", body: "Editorial-grade portraiture for brides, families and pre-wedding moments.", tags: ["Pre-wedding", "Bridal", "Portrait"] },
-  { n: "03", title: "Edit & Color", body: "Retouching, grade and finishing — frame-by-frame craft that elevates the original take.", tags: ["Retouch", "Color Grade", "Beauty Edit"] },
+  { 
+    n: "01", 
+    id: "wedding-films",
+    title: "Wedding Films", 
+    body: "Cinema-first wedding storytelling. Documentary at heart, directed with vertical and landscape intent.", 
+    tags: ["Feature Film", "Highlight Reel", "Stills"],
+    span: "md:col-span-4"
+  },
+  { 
+    n: "02", 
+    id: "bridal-portraits",
+    title: "Bridal Portraits", 
+    body: "Editorial-grade portraiture capturing the grace, ornaments, and heirloom moments of brides.", 
+    tags: ["Pre-wedding", "Bridal Portrait", "Fine Art"],
+    span: "md:col-span-4"
+  },
+  { 
+    n: "03", 
+    id: "model-photoshoot",
+    title: "Model Photoshoot", 
+    body: "Magazine-grade high fashion modeling portfolios. Sculpted lighting, tailored compositions, and couture art direction.", 
+    tags: ["Fashion", "Portfolio", "Editorial"],
+    span: "md:col-span-4"
+  },
+  { 
+    n: "04", 
+    id: "reel-shoot",
+    title: "Reel Shoot", 
+    body: "Vertical cinematic storytelling optimized for social impact. Crisp transitions and highly engaging vertical narratives.", 
+    tags: ["Vertical Cinema", "Reels", "Commercial"],
+    span: "md:col-span-6"
+  },
+  { 
+    n: "05", 
+    id: "edit-color",
+    title: "Edit & Color", 
+    body: "Retouching, editorial grade, and beauty finishing. Precise frame-by-frame craft that elevates the original take.", 
+    tags: ["Color Grading", "Post Production", "Beauty Edit"],
+    span: "md:col-span-6"
+  },
 ];
 
 function Services() {
@@ -197,26 +256,37 @@ function Services() {
             </h2>
           </Reveal>
           <Reveal delay={200} className="max-w-sm text-sm text-foreground/65">
-            Three disciplines, one obsession with frame, light, and time.
+            Five disciplines, one obsession with frame, light, and time.
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-foreground/15 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8">
           {services.map((s, i) => (
             <Reveal
               key={s.n}
               delay={i * 120}
-              className="group relative flex flex-col gap-10 bg-background/70 p-8 transition-colors duration-500 hover:bg-background md:p-12"
+              className={`group relative flex flex-col gap-8 bg-background/55 border border-foreground/10 rounded-2xl p-8 md:p-10 transition-all duration-500 hover:bg-background hover:border-brand/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/5 ${s.span} min-h-[320px] md:min-h-[350px]`}
             >
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.4em] text-foreground/50">
-                <span>{s.n}</span>
-                <span className="text-brand transition-transform duration-500 group-hover:translate-x-1">↗</span>
+              <div className="flex items-center justify-between">
+                <span className="font-display italic text-4xl text-brand/25 group-hover:text-brand/80 transition-colors duration-500">{s.n}</span>
+                <span className="font-display text-2xl text-brand transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
               </div>
-              <h3 className="font-display text-2xl font-medium leading-tight tracking-tight md:text-3xl">{s.title}</h3>
-              <p className="text-sm leading-relaxed text-foreground/65">{s.body}</p>
-              <ul className="mt-auto flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.3em] text-foreground/55">
+              <div>
+                <h3 className="font-display text-2xl font-medium leading-tight tracking-tight md:text-3xl text-foreground">{s.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/65">{s.body}</p>
+                <div className="mt-5">
+                  <Link
+                    to="/packages"
+                    search={{ service: s.id }}
+                    className="text-xs uppercase tracking-[0.2em] text-brand hover:text-brand/80 transition-all duration-300 border-b border-brand/20 pb-0.5 hover:border-brand font-medium inline-flex items-center gap-1.5"
+                  >
+                    See Packages ⟶
+                  </Link>
+                </div>
+              </div>
+              <ul className="mt-auto flex flex-wrap gap-2 text-[9px] uppercase tracking-[0.25em] text-foreground/55">
                 {s.tags.map((t) => (
-                  <li key={t} className="rounded-full border border-foreground/20 px-3 py-1">{t}</li>
+                  <li key={t} className="rounded-full border border-foreground/15 bg-foreground/5 px-3 py-1 transition-colors duration-500 group-hover:border-brand/35 group-hover:text-brand">{t}</li>
                 ))}
               </ul>
             </Reveal>
@@ -229,15 +299,28 @@ function Services() {
 
 /* ---------------- PORTFOLIO ---------------- */
 const works = [
-  { src: p1, title: "Silver Halide", meta: "Editorial · 2025", w: 1024, h: 1280, span: "md:col-span-5 md:row-span-2 aspect-[4/5]" },
-  { src: p2, title: "Anika & Rohan", meta: "Wedding Film · 2025", w: 1600, h: 1024, span: "md:col-span-7 aspect-[16/10]" },
-  { src: p3, title: "Behind the Set", meta: "Documentary · 2024", w: 1024, h: 1024, span: "md:col-span-4 aspect-square" },
-  { src: p4, title: "Crimson Veil", meta: "Bridal · 2025", w: 1024, h: 1400, span: "md:col-span-3 aspect-[3/4]" },
-  { src: p5, title: "Weightless", meta: "Fashion Film · 2024", w: 1400, h: 1024, span: "md:col-span-7 aspect-[16/10]" },
-  { src: p6, title: "Last Light", meta: "Wedding · 2024", w: 1024, h: 1280, span: "md:col-span-5 aspect-[4/5]" },
+  { src: p1, title: "Silver Halide", meta: "Editorial · 2025", w: 1024, h: 1280, span: "md:col-span-4 aspect-[4/5]" },
+  { src: p2, title: "Anika & Rohan", meta: "Wedding Film · 2025", w: 1600, h: 1024, span: "md:col-span-4 aspect-[4/5]" },
+  { src: p3, title: "Behind the Set", meta: "Documentary · 2024", w: 1024, h: 1024, span: "md:col-span-4 aspect-[4/5]" },
+  { src: p4, title: "Crimson Veil", meta: "Bridal · 2025", w: 1024, h: 1400, span: "md:col-span-4 aspect-[4/5]" },
+  { src: p5, title: "Weightless", meta: "Fashion Film · 2024", w: 1400, h: 1024, span: "md:col-span-4 aspect-[4/5]" },
+  { src: p6, title: "Last Light", meta: "Wedding · 2024", w: 1024, h: 1280, span: "md:col-span-4 aspect-[4/5]" },
 ];
 
 function Portfolio() {
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (activeIdx === null) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveIdx(null);
+      if (e.key === "ArrowLeft") setActiveIdx((prev) => (prev === null ? null : (prev - 1 + works.length) % works.length));
+      if (e.key === "ArrowRight") setActiveIdx((prev) => (prev === null ? null : (prev + 1) % works.length));
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeIdx]);
+
   return (
     <section id="gallery" className="relative px-6 py-28 md:px-12 md:py-40">
       <div className="mx-auto max-w-[1500px]">
@@ -265,9 +348,119 @@ function Portfolio() {
               width={w.w}
               height={w.h}
               speed={0.1 + (i % 3) * 0.05}
-              className={`${w.span} aspect-[4/5] md:aspect-auto`}
+              className={w.span}
+              onClick={() => setActiveIdx(i)}
             />
           ))}
+        </div>
+
+        {/* View Full Gallery redirect link */}
+        <div className="mt-16 flex justify-center">
+          <Link
+            to="/gallery"
+            className="group inline-flex items-center gap-3 font-display text-lg uppercase tracking-[0.3em] text-foreground hover:text-brand transition-colors duration-300 border-b border-foreground/25 pb-1 hover:border-brand"
+          >
+            <span>View Full Gallery</span>
+            <span className="text-brand transition-transform duration-300 group-hover:translate-x-1.5">⟶</span>
+          </Link>
+        </div>
+      </div>
+
+      {/* Modern Lightbox Photo Preview Modal */}
+      {activeIdx !== null && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md transition-opacity duration-300"
+          onClick={() => setActiveIdx(null)}
+        >
+          {/* Close button */}
+          <button 
+            onClick={() => setActiveIdx(null)}
+            className="absolute right-6 top-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-transform duration-300 hover:rotate-90 hover:bg-white/20"
+          >
+            ✕
+          </button>
+          
+          {/* Previous button */}
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveIdx((prev) => (prev === null ? null : (prev - 1 + works.length) % works.length));
+            }}
+            className="absolute left-4 sm:left-6 top-1/2 z-50 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-105"
+          >
+            ←
+          </button>
+
+          {/* Next button */}
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveIdx((prev) => (prev === null ? null : (prev + 1) % works.length));
+            }}
+            className="absolute right-4 sm:right-6 top-1/2 z-50 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-105"
+          >
+            →
+          </button>
+
+          {/* Image content */}
+          <div 
+            className="relative max-h-[85vh] max-w-[90vw] flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img 
+              src={works[activeIdx].src} 
+              alt={works[activeIdx].title} 
+              className="max-h-[72vh] sm:max-h-[75vh] max-w-full object-contain rounded-lg border border-white/15 animate-[zoomIn_0.4s_cubic-bezier(0.22,1,0.36,1)] shadow-2xl"
+            />
+            <div className="mt-6 text-center text-white">
+              <p className="font-display text-sm uppercase tracking-[0.25em] text-white/60">{works[activeIdx].meta}</p>
+              <h3 className="font-display mt-2 text-2xl font-medium tracking-wide">{works[activeIdx].title}</h3>
+            </div>
+          </div>
+          <style>{`
+            @keyframes zoomIn {
+              from { transform: scale(0.96); opacity: 0; }
+              to { transform: scale(1); opacity: 1; }
+            }
+          `}</style>
+        </div>
+      )}
+    </section>
+  );
+}
+
+/* ---------------- SOUL + CINEMA BANNER ---------------- */
+function SoulCinema() {
+  return (
+    <section className="relative overflow-hidden py-16 md:py-24 bg-background">
+      <div 
+        className="relative mx-auto w-full max-w-[1760px] h-[500px] md:h-[650px] overflow-hidden bg-black"
+        style={{
+          clipPath: "polygon(0 8%, 100% 0, 100% 92%, 0 100%)"
+        }}
+      >
+        {/* Background Image */}
+        <img 
+          src={manifestoCouple} 
+          alt="Traditional Bengali Couple Intimate Moment" 
+          className="absolute inset-0 h-full w-full object-cover grayscale opacity-55 scale-105 transition-transform duration-1000"
+        />
+        {/* Radial Vignette Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.85)_100%)]" />
+        
+        {/* Content Box */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 z-10">
+          <Reveal>
+            <h2 className="font-display text-4xl sm:text-6xl md:text-8xl tracking-[0.08em] text-white font-medium uppercase drop-shadow-[0_2px_15px_rgba(0,0,0,0.5)]">
+              SOUL <span className="font-light text-brand">+</span> CINEMA
+            </h2>
+          </Reveal>
+
+          <Reveal delay={200} className="mt-8 max-w-2xl">
+            <p className="font-display italic text-base sm:text-lg md:text-[21px] leading-[1.65] text-white/85 font-light tracking-wide drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]">
+              "Every wedding is a sacred tapestry, and so are our films. For years, Rounakmanna Films has documented the quiet, powerful heritage of Bengali weddings—the soft sound of shehnai, the vibrant red of alta, and the sacred pheras around the fire. We are fortunate to capture these timeless traditions, weaving them into cinematic heirlooms that carry the warmth, emotion, and age-old soul of Bengal."
+            </p>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -308,8 +501,8 @@ function Contact() {
           <div className="md:col-span-2 mt-6 flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
             <p className="max-w-sm text-xs text-foreground/55">
               Or write directly to{" "}
-              <UnderlineLink href="mailto:hello@raunakmannaflims.com" className="text-brand">
-                hello@raunakmannaflims.com
+              <UnderlineLink href="mailto:hello@rounakmannafilms.com" className="text-brand">
+                hello@rounakmannafilms.com
               </UnderlineLink>. We respond within 48 hours.
             </p>
             <button
@@ -324,39 +517,6 @@ function Contact() {
         </form>
       </div>
     </section>
-  );
-}
-
-/* ---------------- FOOTER ---------------- */
-function Footer() {
-  return (
-    <footer className="relative border-t border-foreground/15 px-6 py-12 md:px-10">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 items-end gap-8 text-[10px] uppercase tracking-[0.3em] text-foreground/60 md:grid-cols-4">
-        <div className="col-span-2 md:col-span-1">
-          <a href="#top" className="flex items-baseline gap-1 leading-none">
-            <span className="font-script text-3xl font-bold text-brand">RM</span>
-            <span className="font-script text-base italic text-foreground/70">flims</span>
-          </a>
-          <p className="mt-3">© Raunakmanna Flims · 2025</p>
-        </div>
-        <div className="space-y-2">
-          <p className="text-foreground/50">Social</p>
-          <ul className="space-y-1">
-            <li><UnderlineLink href="#" className="text-foreground">Instagram</UnderlineLink></li>
-            <li><UnderlineLink href="#" className="text-foreground">YouTube</UnderlineLink></li>
-            <li><UnderlineLink href="#" className="text-foreground">Vimeo</UnderlineLink></li>
-          </ul>
-        </div>
-        <div className="space-y-2">
-          <p className="text-foreground/50">Studio</p>
-          <p className="text-foreground/85 normal-case tracking-normal">Mumbai · Delhi · Pan India</p>
-        </div>
-        <div className="space-y-2 text-right md:text-left">
-          <p className="text-foreground/50">Index</p>
-          <a href="#top" className="text-foreground">Back to top ↑</a>
-        </div>
-      </div>
-    </footer>
   );
 }
 

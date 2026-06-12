@@ -9,6 +9,7 @@ interface Props {
   speed?: number;
   width: number;
   height: number;
+  onClick?: () => void;
 }
 
 export function PortfolioItem({
@@ -19,6 +20,7 @@ export function PortfolioItem({
   speed = 0.12,
   width,
   height,
+  onClick,
 }: Props) {
   const ref = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
@@ -60,9 +62,10 @@ export function PortfolioItem({
     <figure
       ref={ref}
       data-cursor="hover"
+      onClick={onClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`group relative overflow-hidden bg-charcoal ${
+      className={`group relative overflow-hidden bg-charcoal cursor-pointer rounded-2xl ${
         shown ? "opacity-100" : "opacity-0"
       } transition-opacity duration-1000 ${className}`}
     >

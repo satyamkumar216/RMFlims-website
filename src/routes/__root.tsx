@@ -10,7 +10,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -37,9 +36,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -77,11 +73,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#ebe4d4" },
-      { title: "Raunakmanna Films — Wedding Cinematography & Photography" },
-      { name: "description", content: "Raunakmanna Films — heirloom wedding films and bridal photography. Cream, ink, and a single thread of red." },
+      { name: "theme-color", content: "#e1dbd0" },
+      { title: "Rounakmanna Films — Wedding Cinematography & Photography" },
+      { name: "description", content: "Rounakmanna Films — heirloom wedding films and bridal photography. Cream, ink, and a single thread of red." },
       { property: "og:type", content: "website" },
-      { property: "og:title", content: "Raunakmanna Films" },
+      { property: "og:title", content: "Rounakmanna Films" },
       { property: "og:description", content: "Heirloom wedding films & bridal photography." },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -90,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Dancing+Script:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Dancing+Script:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap",
       },
       {
         rel: "stylesheet",

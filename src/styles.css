@@ -35,7 +35,7 @@
   --color-cream: var(--cream);
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Playfair Display", "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-display: "Cormorant Garamond", "Playfair Display", ui-serif, Georgia, serif;
   --font-script: "Dancing Script", "Caveat", cursive;
 }
 
@@ -43,8 +43,8 @@
   --radius: 9999px;
 
   /* Cream editorial palette */
-  --background: oklch(0.93 0.018 80);       /* cream #ebe4d4-ish */
-  --cream: oklch(0.93 0.018 80);
+  --background: #e1dbd0;
+  --cream: #e1dbd0;
   --foreground: oklch(0.18 0.005 60);       /* near black ink */
   --ink: oklch(0.12 0 0);
   --charcoal: oklch(0.86 0.018 80);          /* deeper cream section break */
@@ -54,20 +54,20 @@
   --popover: oklch(0.96 0.015 80);
   --popover-foreground: oklch(0.18 0.005 60);
 
-  --brand: oklch(0.58 0.16 28);              /* rich red #c0473d */
-  --primary: oklch(0.58 0.16 28);
+  --brand: #bb4444;                          /* rich red #bb4444 */
+  --primary: #bb4444;
   --primary-foreground: oklch(0.97 0.01 80);
   --secondary: oklch(0.86 0.018 80);
   --secondary-foreground: oklch(0.18 0.005 60);
   --muted: oklch(0.88 0.015 80);
   --muted-foreground: oklch(0.42 0.01 60);
-  --accent: oklch(0.58 0.16 28);
+  --accent: #bb4444;
   --accent-foreground: oklch(0.97 0.01 80);
   --destructive: oklch(0.55 0.20 25);
   --destructive-foreground: oklch(0.97 0.01 80);
   --border: oklch(0.18 0.005 60 / 14%);
   --input: oklch(0.18 0.005 60 / 18%);
-  --ring: oklch(0.58 0.16 28 / 40%);
+  --ring: rgba(187, 68, 68, 0.4);
 }
 
 @layer base {
@@ -164,11 +164,11 @@
 }
 @utility hero-breathe { animation: breathe 8s ease-in-out infinite; }
 
-@keyframes flims-slide {
+@keyframes films-slide {
   0% { transform: translateY(20px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
 }
-@utility flims-in { animation: flims-slide 1.2s cubic-bezier(0.22,1,0.36,1) 0.6s both; }
+@utility films-in { animation: films-slide 1.2s cubic-bezier(0.22,1,0.36,1) 0.6s both; }
 
 /* ---------- Portfolio hover ---------- */
 @utility port-img {

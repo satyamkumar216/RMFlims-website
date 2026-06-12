@@ -79,12 +79,20 @@ export function MenuOverlay() {
           <div className="mt-10 flex flex-col gap-6 text-xs uppercase tracking-[0.25em] text-muted-foreground md:flex-row md:items-end md:justify-between">
             <div className="space-y-1">
               <p className="text-foreground/50">Studio</p>
-              <p>Mumbai · Delhi · Worldwide</p>
+              <a 
+                href="https://maps.google.com/?q=Bargachia,+Howrah,+West+Bengal" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-foreground hover:text-brand transition-colors duration-300 normal-case tracking-normal font-medium block mt-1"
+                data-cursor="hover"
+              >
+                Howrah, Bargachia
+              </a>
             </div>
             <div className="space-y-1">
               <p className="text-foreground/50">Get in touch</p>
-              <a href="mailto:hello@raunakmanna.films" className="text-foreground hover:opacity-70">
-                hello@raunakmanna.films
+              <a href="mailto:hello@rounakmanna.films" className="text-foreground hover:opacity-70">
+                hello@rounakmanna.films
               </a>
             </div>
           </div>
