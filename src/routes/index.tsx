@@ -307,7 +307,13 @@ const works = [
   { src: p5, title: "Weightless", meta: "Fashion Film · 2024", w: 1400, h: 1024 },
   { src: p6, title: "Last Light", meta: "Wedding · 2024", w: 1024, h: 1280 },
   { src: heroBride, title: "Golden Hour Bride", meta: "Bridal · 2025", w: 1024, h: 1350 },
-  { src: manifestoCouple, title: "Sacred Tapestry", meta: "Weddings · 2025", w: 1600, h: 1024 }
+  { src: manifestoCouple, title: "Sacred Tapestry", meta: "Weddings · 2025", w: 1600, h: 1024 },
+  { src: p1, title: "Vintage Frames", meta: "Editorial · 2024", w: 1024, h: 1280 },
+  { src: p2, title: "Eternal Vows", meta: "Wedding · 2025", w: 1600, h: 1024 },
+  { src: p3, title: "The Narrative", meta: "Documentary · 2025", w: 1024, h: 1024 },
+  { src: p4, title: "Saffron Veil", meta: "Bridal · 2024", w: 1024, h: 1400 },
+  { src: p5, title: "In Motion", meta: "Fashion Film · 2025", w: 1400, h: 1024 },
+  { src: p6, title: "First Dance", meta: "Wedding · 2025", w: 1024, h: 1280 }
 ];
 
 function Portfolio() {
@@ -329,34 +335,41 @@ function Portfolio() {
     { type: "image", ...works[1], originalIndex: 1 },
     { type: "image", ...works[2], originalIndex: 2 },
     { type: "image", ...works[3], originalIndex: 3 },
-    { type: "center-card" },
     { type: "image", ...works[4], originalIndex: 4 },
     { type: "image", ...works[5], originalIndex: 5 },
     { type: "image", ...works[6], originalIndex: 6 },
+    { type: "center-card" },
     { type: "image", ...works[7], originalIndex: 7 },
+    { type: "image", ...works[8], originalIndex: 8 },
+    { type: "image", ...works[9], originalIndex: 9 },
+    { type: "image", ...works[10], originalIndex: 10 },
+    { type: "image", ...works[11], originalIndex: 11 },
+    { type: "image", ...works[12], originalIndex: 12 },
+    { type: "image", ...works[13], originalIndex: 13 },
   ];
 
   return (
     <section id="gallery" className="relative px-6 py-28 md:px-12 md:py-40">
       <div className="mx-auto max-w-[1500px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
           {gridItems.map((item, i) => {
             if (item.type === "center-card") {
               return (
                 <div 
                   key="center-card" 
-                  className="flex flex-col items-center justify-center p-8 bg-ink text-cream rounded-2xl shadow-lg aspect-[4/5] text-center border border-foreground/10 paper-grain col-span-1 sm:col-span-2 md:col-span-1"
+                  className="flex flex-col items-center justify-center p-6 bg-charcoal text-foreground rounded-2xl shadow-sm aspect-[4/5] text-center border border-brand/15 paper-grain col-span-1 transition-all duration-300 hover:border-brand/40 hover:shadow-md"
                 >
-                  <span className="text-[10px] uppercase tracking-[0.4em] text-cream/45 mb-3">— Showcase</span>
-                  <h3 className="font-sans text-3xl sm:text-4xl font-extrabold tracking-[0.15em] text-cream uppercase leading-none">
+                  <span className="text-[9px] uppercase tracking-[0.4em] text-foreground/45 mb-2">— Showcase</span>
+                  <h3 className="font-sans text-xl sm:text-2xl font-extrabold tracking-[0.12em] text-foreground uppercase leading-none">
                     OUR WORK
                   </h3>
+                  <span className="h-1 w-1 rounded-full bg-brand mt-3" />
                   <Link
                     to="/gallery"
-                    className="font-sans text-[11px] uppercase tracking-[0.25em] text-brand hover:text-brand/80 transition-colors duration-300 mt-6 border-b border-brand/30 pb-1"
+                    className="font-sans text-[10px] uppercase tracking-[0.25em] text-brand hover:text-brand/80 transition-colors duration-300 mt-5 border-b border-brand/30 pb-0.5"
                     data-cursor="hover"
                   >
-                    view full gallery
+                    view gallery
                   </Link>
                 </div>
               );
@@ -370,7 +383,7 @@ function Portfolio() {
                 meta={item.meta!}
                 width={item.w!}
                 height={item.h!}
-                speed={0.1 + (i % 3) * 0.05}
+                speed={0.05 + (i % 3) * 0.03}
                 className="aspect-[4/5]"
                 onClick={() => setActiveIdx(item.originalIndex!)}
               />
