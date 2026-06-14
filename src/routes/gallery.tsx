@@ -50,7 +50,7 @@ function GalleryPage() {
   }, [activeIdx, filteredItems]);
 
   return (
-    <div id="top" className="min-h-screen bg-background text-foreground paper-grain px-6 py-8 md:px-12 md:py-12 flex flex-col">
+    <div id="top" className="min-h-screen bg-background text-foreground paper-grain px-4 py-6 md:px-12 md:py-12 flex flex-col">
       {/* Header */}
       <header className="flex items-center justify-between border-b border-foreground/10 pb-6 md:pb-8">
         <Link to="/" className="flex items-center gap-2">
@@ -58,7 +58,7 @@ function GalleryPage() {
         </Link>
         <Link 
           to="/" 
-          className="font-display text-sm sm:text-base uppercase tracking-[0.25em] text-foreground/80 hover:text-brand transition-colors duration-300 border-b border-transparent hover:border-brand pb-0.5"
+          className="font-display text-sm sm:text-base uppercase tracking-[0.25em] text-foreground/80 hover:text-brand transition-colors duration-300 border-b border-transparent hover:border-brand pb-0.5 min-h-[44px] flex items-center"
         >
           ← Back to Home
         </Link>
@@ -66,18 +66,18 @@ function GalleryPage() {
 
       {/* Main Content */}
       <main className="flex-1 max-w-7xl mx-auto w-full mt-12 md:mt-20">
-        <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+        <div className="text-center max-w-2xl mx-auto mb-5 md:mb-24">
           <p className="text-[10px] uppercase tracking-[0.4em] text-foreground/55">— Archive</p>
-          <h1 className="font-display mt-4 text-5xl sm:text-7xl font-light tracking-[0.02em] uppercase text-foreground leading-[1.1]">
+          <h1 className="font-display mt-4 text-[32px] sm:text-7xl font-light tracking-[0.02em] uppercase text-foreground leading-[1.1]">
             THE GALLERY
           </h1>
-          <p className="font-display italic lowercase text-2xl sm:text-3xl text-brand mt-2">
+          <p className="font-display italic lowercase text-xl sm:text-3xl text-brand mt-2">
             selected frames & moments
           </p>
         </div>
 
         {/* Filter Controls */}
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-12 md:mb-16">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-8 mb-5 md:mb-16">
           {["All", "Weddings", "Bridal", "Editorial"].map((cat) => (
             <button
               key={cat}
@@ -85,7 +85,7 @@ function GalleryPage() {
                 setFilter(cat);
                 setActiveIdx(null);
               }}
-              className={`font-display text-sm sm:text-base uppercase tracking-[0.2em] px-4 py-2 border-b-2 transition-all duration-300 ${
+              className={`font-display text-sm sm:text-base uppercase tracking-[0.2em] px-4 py-2 min-h-[44px] flex items-center justify-center border-b-2 transition-all duration-300 ${
                 filter === cat 
                   ? "border-brand text-brand font-semibold" 
                   : "border-transparent text-foreground/60 hover:text-foreground hover:border-foreground/20"
@@ -97,12 +97,12 @@ function GalleryPage() {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 auto-rows-fr">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-8 auto-rows-fr">
           {filteredItems.map((item, index) => (
             <div
               key={item.id}
               onClick={() => setActiveIdx(index)}
-              className={`group relative overflow-hidden bg-charcoal rounded-2xl cursor-pointer ${item.aspect} shadow-md transition-all duration-700 hover:shadow-xl`}
+              className={`group relative overflow-hidden bg-charcoal rounded-[12px] md:rounded-2xl cursor-pointer ${item.aspect} shadow-md transition-all duration-700 hover:shadow-xl`}
             >
               <img
                 src={item.src}
@@ -110,10 +110,10 @@ function GalleryPage() {
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6" />
-              <div className="absolute bottom-6 left-6 right-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <span className="text-[10px] uppercase tracking-[0.3em] text-white/70">{item.category} · {item.year}</span>
-                <h3 className="font-display text-lg sm:text-xl font-medium text-white mt-1">{item.title}</h3>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4 md:p-6" />
+              <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500">
+                <span className="text-[10px] uppercase tracking-[0.1em] md:tracking-[0.3em] text-white/70 block whitespace-nowrap">{item.category} · {item.year}</span>
+                <h3 className="font-display text-[13px] md:text-lg sm:text-xl font-medium text-white mt-1 break-words leading-tight">{item.title}</h3>
               </div>
             </div>
           ))}

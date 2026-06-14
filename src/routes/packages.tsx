@@ -182,7 +182,7 @@ function PackagesPage() {
   const activePackages = packagesData[activeTab as keyof typeof packagesData] || [];
 
   return (
-    <div id="top" className="min-h-screen bg-background text-foreground paper-grain px-6 py-8 md:px-12 md:py-12 flex flex-col">
+    <div id="top" className="min-h-screen bg-background text-foreground paper-grain px-4 py-6 md:px-12 md:py-12 flex flex-col">
       {/* Header */}
       <header className="flex items-center justify-between border-b border-foreground/10 pb-6 md:pb-8">
         <Link to="/" className="flex items-center gap-2">
@@ -190,7 +190,7 @@ function PackagesPage() {
         </Link>
         <Link 
           to="/" 
-          className="font-display text-sm sm:text-base uppercase tracking-[0.25em] text-foreground/80 hover:text-brand transition-colors duration-300 border-b border-transparent hover:border-brand pb-0.5"
+          className="font-display text-sm sm:text-base uppercase tracking-[0.25em] text-foreground/80 hover:text-brand transition-colors duration-300 border-b border-transparent hover:border-brand pb-0.5 min-h-[44px] flex items-center"
         >
           ← Back to Home
         </Link>
@@ -198,23 +198,23 @@ function PackagesPage() {
 
       {/* Main Content */}
       <main className="flex-1 max-w-7xl mx-auto w-full mt-12 md:mt-20">
-        <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+        <div className="text-center max-w-2xl mx-auto mb-5 md:mb-24">
           <p className="text-[10px] uppercase tracking-[0.4em] text-foreground/55">— Collections</p>
-          <h1 className="font-display mt-4 text-5xl sm:text-7xl font-light tracking-[0.02em] uppercase text-foreground leading-[1.1]">
+          <h1 className="font-display mt-4 text-[32px] sm:text-7xl font-light tracking-[0.02em] uppercase text-foreground leading-[1.1]">
             OUR PACKAGES
           </h1>
-          <p className="font-display italic lowercase text-2xl sm:text-3xl text-brand mt-2">
+          <p className="font-display italic lowercase text-xl sm:text-3xl text-brand mt-2">
             curated offerings & details
           </p>
         </div>
 
         {/* Dynamic Service Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 md:gap-6 mb-16 border-b border-foreground/10 pb-6">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 md:gap-6 mb-5 border-b border-foreground/10 pb-6 md:mb-16">
           {serviceTabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`group flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all duration-300 ${
+              className={`group flex items-center gap-3 px-4 py-2.5 min-h-[44px] rounded-lg transition-all duration-300 ${
                 activeTab === tab.id
                   ? "bg-brand/10 text-brand font-semibold shadow-sm border border-brand/25"
                   : "text-foreground/60 hover:text-foreground hover:bg-foreground/5 border border-transparent"
@@ -231,11 +231,11 @@ function PackagesPage() {
         </div>
 
         {/* Packages Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           {activePackages.map((pkg, idx) => (
             <div
               key={idx}
-              className="group relative flex flex-col justify-between bg-background/55 border border-foreground/10 rounded-2xl p-8 md:p-10 transition-all duration-500 hover:bg-background hover:border-brand/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/5"
+              className="group relative flex flex-col justify-between bg-background/55 border border-foreground/10 rounded-[12px] md:rounded-2xl p-4 md:p-10 transition-all duration-500 hover:bg-background hover:border-brand/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/5"
             >
               <div>
                 <div className="flex items-center justify-between border-b border-foreground/10 pb-4">
@@ -255,7 +255,7 @@ function PackagesPage() {
                 </p>
 
                 {/* Deliverables List */}
-                <ul className="mt-8 space-y-4">
+                <ul className="mt-5 space-y-3 md:mt-8 md:space-y-4">
                   {pkg.features.map((feature, fIdx) => (
                     <li key={fIdx} className="flex items-start gap-3 text-xs leading-relaxed text-foreground/75">
                       <span className="text-brand text-sm leading-none select-none">✦</span>
@@ -266,10 +266,10 @@ function PackagesPage() {
               </div>
 
               {/* Inquire CTA Button inside each package */}
-              <div className="mt-10 pt-6 border-t border-foreground/10">
+              <div className="mt-5 pt-4 md:mt-10 md:pt-6 border-t border-foreground/10">
                 <a
                   href="/#contact"
-                  className="w-full justify-center group inline-flex items-center gap-2 font-display text-xs uppercase tracking-[0.25em] text-foreground hover:text-brand transition-colors duration-300 py-3 rounded-lg border border-foreground/15 hover:border-brand/40 bg-foreground/5 hover:bg-brand/5"
+                  className="w-full justify-center group inline-flex items-center gap-2 font-display text-xs uppercase tracking-[0.25em] text-foreground hover:text-brand transition-colors duration-300 py-3 min-h-[44px] rounded-lg border border-foreground/15 hover:border-brand/40 bg-foreground/5 hover:bg-brand/5"
                 >
                   <span>Book Offering</span>
                   <span className="text-brand transition-transform duration-300 group-hover:translate-x-1">⟶</span>
