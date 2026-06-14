@@ -576,7 +576,7 @@ function Contact() {
 function WhatsAppFab() {
   return (
     <a
-      href="https://wa.me/910000000000"
+      href="https://wa.me/7063348026"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
