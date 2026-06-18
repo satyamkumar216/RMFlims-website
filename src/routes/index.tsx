@@ -678,12 +678,21 @@ function Contact() {
             )}
 
             <div className="md:col-span-2 mt-3 md:mt-12 flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between md:gap-6">
-              <p className="max-w-sm text-xs text-foreground/55">
-                Or write directly to{" "}
-                <UnderlineLink href="mailto:hello@rounakmannafilms.com" className="text-brand">
-                  hello@rounakmannafilms.com
-                </UnderlineLink>. We respond within 48 hours.
-              </p>
+              <div className="max-w-sm text-xs text-foreground/55 space-y-1">
+                <p>
+                  Or write directly to{" "}
+                  <UnderlineLink href="mailto:hello@rounakmannafilms.com" className="text-brand">
+                    hello@rounakmannafilms.com
+                  </UnderlineLink>
+                </p>
+                <p>
+                  Or call us at{" "}
+                  <UnderlineLink href="tel:+917063348026" className="text-brand">
+                    +91 7063348026
+                  </UnderlineLink>
+                </p>
+                <p>We respond within 48 hours.</p>
+              </div>
               <button
                 type="submit"
                 disabled={submitting}
