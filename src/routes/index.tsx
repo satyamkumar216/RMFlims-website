@@ -521,7 +521,7 @@ function SoulCinema() {
 
 /* ---------------- CONTACT ---------------- */
 function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', date: '', city: '', brief: '' })
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', date: '', city: '', brief: '' })
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
@@ -599,7 +599,7 @@ function Contact() {
       const { error } = await supabase.from('enquiries').insert({
         name: formData.name.trim(),
         email: formData.email.trim(),
-        phone: 'N/A',
+        phone: formData.phone.trim() || 'N/A',
         package: 'website_inquiry',
         event_date: dbFormattedDate,
         message: formData.brief.trim() || 'No message provided',
@@ -610,7 +610,7 @@ function Contact() {
       if (error) throw error
 
       setSubmitted(true)
-      setFormData({ name: '', email: '', date: '', city: '', brief: '' })
+      setFormData({ name: '', email: '', phone: '', date: '', city: '', brief: '' })
     } catch (err: any) {
       console.error('Enquiry submission error:', err)
       setErrorMsg(err?.message || 'Something went wrong. Please try again or email us directly.')
@@ -644,6 +644,7 @@ function Contact() {
             {[
               { label: "Your name", type: "text", name: "name", placeholder: "" },
               { label: "Email", type: "email", name: "email", placeholder: "" },
+              { label: "Phone number", type: "tel", name: "phone", placeholder: "e.g. +91 98765 43210" },
               { label: "Wedding date (DD/MM/YYYY)", type: "text", name: "date", placeholder: "DD/MM/YYYY" },
               { label: "City", type: "text", name: "city", placeholder: "" },
             ].map((f) => (
