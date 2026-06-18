@@ -645,7 +645,7 @@ function Contact() {
               { label: "Your name", type: "text", name: "name", placeholder: "" },
               { label: "Email", type: "email", name: "email", placeholder: "" },
               { label: "Phone number", type: "tel", name: "phone", placeholder: "e.g. 98765 43210" },
-              { label: "Wedding date (DD/MM/YYYY)", type: "text", name: "date", placeholder: "DD/MM/YYYY" },
+              { label: "Wedding date", type: "text", name: "date", placeholder: "DD / MM / YYYY" },
               { label: "City", type: "text", name: "city", placeholder: "" },
             ].map((f) => (
               <label key={f.name} className="group block">
@@ -656,7 +656,7 @@ function Contact() {
                   value={formData[f.name as keyof typeof formData]}
                   onChange={handleChange}
                   placeholder={f.placeholder}
-                  className="mt-3 w-full border-0 border-b border-foreground/30 bg-transparent pb-3 text-lg text-foreground outline-none transition-colors focus:border-brand"
+                  className="mt-3 w-full border-0 border-b border-foreground/30 bg-transparent pb-3 text-lg text-foreground outline-none transition-colors focus:border-brand placeholder:text-xs placeholder:text-foreground/20 placeholder:tracking-widest"
                 />
               </label>
             ))}
