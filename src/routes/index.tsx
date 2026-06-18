@@ -521,6 +521,53 @@ function SoulCinema() {
 
 /* ---------------- CONTACT ---------------- */
 function Contact() {
+  const [formData, setFormData] = useState({ name: '', email: '', date: '', city: '', brief: '' })
+  const [submitting, setSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [errorMsg, setErrorMsg] = useState<string | null>(null)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setErrorMsg(null)
+
+    // Basic validation
+    if (!formData.name.trim() || !formData.email.trim()) {
+      setErrorMsg('Please fill in at least your name and email.')
+      return
+    }
+
+    setSubmitting(true)
+
+    try {
+      const { supabase } = await import('@/lib/supabase')
+
+      const { error } = await supabase.from('enquiries').insert({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: 'N/A',
+        package: 'website_inquiry',
+        event_date: formData.date.trim() || new Date().toISOString().split('T')[0],
+        message: formData.brief.trim() || 'No message provided',
+        location: formData.city.trim() || null,
+        status: 'new',
+      })
+
+      if (error) throw error
+
+      setSubmitted(true)
+      setFormData({ name: '', email: '', date: '', city: '', brief: '' })
+    } catch (err: any) {
+      console.error('Enquiry submission error:', err)
+      setErrorMsg(err?.message || 'Something went wrong. Please try again or email us directly.')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
   return (
     <section id="contact" className="relative bg-charcoal/60 px-4 py-12 md:px-16 md:py-40">
       <div className="mx-auto max-w-6xl">
@@ -530,43 +577,72 @@ function Contact() {
           <MaskReveal delay={120}><span className="italic font-medium text-brand">shoot.</span></MaskReveal>
         </h2>
 
-        <form className="mt-5 grid grid-cols-1 gap-3 md:mt-24 md:grid-cols-2 md:gap-x-16 md:gap-y-12" onSubmit={(e) => e.preventDefault()}>
-          {[
-            { label: "Your name", type: "text", name: "name" },
-            { label: "Email", type: "email", name: "email" },
-            { label: "Wedding date", type: "text", name: "date" },
-            { label: "City", type: "text", name: "city" },
-          ].map((f) => (
-            <label key={f.name} className="group block">
-              <span className="block text-[10px] uppercase tracking-[0.4em] text-foreground/55">{f.label}</span>
-              <input
-                type={f.type}
-                name={f.name}
-                className="mt-3 w-full border-0 border-b border-foreground/30 bg-transparent pb-3 text-lg text-foreground outline-none transition-colors focus:border-brand"
-              />
-            </label>
-          ))}
-          <label className="block md:col-span-2">
-            <span className="block text-[10px] uppercase tracking-[0.4em] text-foreground/55">Tell us about it</span>
-            <textarea rows={3} name="brief" className="mt-3 w-full resize-none border-0 border-b border-foreground/30 bg-transparent pb-3 text-lg text-foreground outline-none transition-colors focus:border-brand" />
-          </label>
-          <div className="md:col-span-2 mt-3 md:mt-12 flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between md:gap-6">
-            <p className="max-w-sm text-xs text-foreground/55">
-              Or write directly to{" "}
-              <UnderlineLink href="mailto:hello@rounakmannafilms.com" className="text-brand">
-                hello@rounakmannafilms.com
-              </UnderlineLink>. We respond within 48 hours.
-            </p>
+        {submitted ? (
+          <div className="mt-12 md:mt-24 rounded-2xl border border-brand/30 bg-brand/5 p-8 md:p-12 text-center">
+            <p className="font-display text-2xl md:text-4xl text-brand font-medium">Thank you! 🎬</p>
+            <p className="mt-4 text-foreground/70 text-base md:text-lg">Your inquiry has been received. We'll get back to you within 48 hours.</p>
             <button
-              type="submit"
-              data-cursor="hover"
-              className="group/cta relative inline-flex items-center gap-4 rounded-full bg-brand px-8 py-4 font-script text-xl text-primary-foreground transition-transform hover:-translate-y-0.5"
+              onClick={() => setSubmitted(false)}
+              className="mt-6 text-sm text-brand underline underline-offset-4 hover:text-brand/80 transition-colors"
             >
-              <span>Send inquiry</span>
-              <span className="transition-transform duration-500 group-hover/cta:translate-x-1">→</span>
+              Send another inquiry
             </button>
           </div>
-        </form>
+        ) : (
+          <form className="mt-5 grid grid-cols-1 gap-3 md:mt-24 md:grid-cols-2 md:gap-x-16 md:gap-y-12" onSubmit={handleSubmit}>
+            {[
+              { label: "Your name", type: "text", name: "name" },
+              { label: "Email", type: "email", name: "email" },
+              { label: "Wedding date", type: "text", name: "date" },
+              { label: "City", type: "text", name: "city" },
+            ].map((f) => (
+              <label key={f.name} className="group block">
+                <span className="block text-[10px] uppercase tracking-[0.4em] text-foreground/55">{f.label}</span>
+                <input
+                  type={f.type}
+                  name={f.name}
+                  value={formData[f.name as keyof typeof formData]}
+                  onChange={handleChange}
+                  className="mt-3 w-full border-0 border-b border-foreground/30 bg-transparent pb-3 text-lg text-foreground outline-none transition-colors focus:border-brand"
+                />
+              </label>
+            ))}
+            <label className="block md:col-span-2">
+              <span className="block text-[10px] uppercase tracking-[0.4em] text-foreground/55">Tell us about it</span>
+              <textarea
+                rows={3}
+                name="brief"
+                value={formData.brief}
+                onChange={handleChange}
+                className="mt-3 w-full resize-none border-0 border-b border-foreground/30 bg-transparent pb-3 text-lg text-foreground outline-none transition-colors focus:border-brand"
+              />
+            </label>
+
+            {errorMsg && (
+              <div className="md:col-span-2 rounded-lg bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-400">
+                {errorMsg}
+              </div>
+            )}
+
+            <div className="md:col-span-2 mt-3 md:mt-12 flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between md:gap-6">
+              <p className="max-w-sm text-xs text-foreground/55">
+                Or write directly to{" "}
+                <UnderlineLink href="mailto:hello@rounakmannafilms.com" className="text-brand">
+                  hello@rounakmannafilms.com
+                </UnderlineLink>. We respond within 48 hours.
+              </p>
+              <button
+                type="submit"
+                disabled={submitting}
+                data-cursor="hover"
+                className="group/cta relative inline-flex items-center gap-4 rounded-full bg-brand px-8 py-4 font-script text-xl text-primary-foreground transition-transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+              >
+                <span>{submitting ? 'Sending...' : 'Send inquiry'}</span>
+                <span className="transition-transform duration-500 group-hover/cta:translate-x-1">{submitting ? '⏳' : '→'}</span>
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </section>
   );
