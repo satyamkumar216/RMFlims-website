@@ -644,7 +644,7 @@ function Contact() {
             {[
               { label: "Your name", type: "text", name: "name", placeholder: "" },
               { label: "Email", type: "email", name: "email", placeholder: "" },
-              { label: "Phone number", type: "tel", name: "phone", placeholder: "e.g. +91 98765 43210" },
+              { label: "Phone number", type: "tel", name: "phone", placeholder: "e.g. 98765 43210" },
               { label: "Wedding date (DD/MM/YYYY)", type: "text", name: "date", placeholder: "DD/MM/YYYY" },
               { label: "City", type: "text", name: "city", placeholder: "" },
             ].map((f) => (
@@ -688,7 +688,7 @@ function Contact() {
                 <p>
                   Or call us at{" "}
                   <UnderlineLink href="tel:+917063348026" className="text-brand">
-                    +91 7063348026
+                    7063348026
                   </UnderlineLink>
                 </p>
                 <p>We respond within 48 hours.</p>
