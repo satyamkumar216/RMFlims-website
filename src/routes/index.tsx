@@ -526,8 +526,27 @@ function Contact() {
   const [submitted, setSubmitted] = useState(false)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
+  const formatDatePickerInput = (value: string): string => {
+    const clean = value.replace(/\D/g, '').slice(0, 8);
+    let formatted = '';
+    if (clean.length > 0) {
+      formatted += clean.slice(0, 2);
+    }
+    if (clean.length > 2) {
+      formatted += '/' + clean.slice(2, 4);
+    }
+    if (clean.length > 4) {
+      formatted += '/' + clean.slice(4, 8);
+    }
+    return formatted;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    let val = e.target.value;
+    if (e.target.name === 'date') {
+      val = formatDatePickerInput(val);
+    }
+    setFormData(prev => ({ ...prev, [e.target.name]: val }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -540,6 +559,38 @@ function Contact() {
       return
     }
 
+    // Date validation & parsing
+    let dbFormattedDate = '';
+    if (formData.date.trim()) {
+      const dateRegex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+      const match = formData.date.match(dateRegex);
+      if (!match) {
+        setErrorMsg('Please enter the wedding date in DD/MM/YYYY format (e.g., 28/11/2026).');
+        return;
+      }
+      const day = parseInt(match[1], 10);
+      const month = parseInt(match[2], 10);
+      const year = parseInt(match[3], 10);
+
+      // Validate actual date existence
+      const parsedDate = new Date(year, month - 1, day);
+      if (
+        parsedDate.getFullYear() !== year ||
+        parsedDate.getMonth() !== month - 1 ||
+        parsedDate.getDate() !== day
+      ) {
+        setErrorMsg('Please enter a valid calendar date.');
+        return;
+      }
+
+      // Format as YYYY-MM-DD
+      const mm = String(month).padStart(2, '0');
+      const dd = String(day).padStart(2, '0');
+      dbFormattedDate = `${year}-${mm}-${dd}`;
+    } else {
+      dbFormattedDate = new Date().toISOString().split('T')[0];
+    }
+
     setSubmitting(true)
 
     try {
@@ -550,7 +601,7 @@ function Contact() {
         email: formData.email.trim(),
         phone: 'N/A',
         package: 'website_inquiry',
-        event_date: formData.date.trim() || new Date().toISOString().split('T')[0],
+        event_date: dbFormattedDate,
         message: formData.brief.trim() || 'No message provided',
         location: formData.city.trim() || null,
         status: 'new',
@@ -591,10 +642,10 @@ function Contact() {
         ) : (
           <form className="mt-5 grid grid-cols-1 gap-3 md:mt-24 md:grid-cols-2 md:gap-x-16 md:gap-y-12" onSubmit={handleSubmit}>
             {[
-              { label: "Your name", type: "text", name: "name" },
-              { label: "Email", type: "email", name: "email" },
-              { label: "Wedding date", type: "text", name: "date" },
-              { label: "City", type: "text", name: "city" },
+              { label: "Your name", type: "text", name: "name", placeholder: "" },
+              { label: "Email", type: "email", name: "email", placeholder: "" },
+              { label: "Wedding date (DD/MM/YYYY)", type: "text", name: "date", placeholder: "DD/MM/YYYY" },
+              { label: "City", type: "text", name: "city", placeholder: "" },
             ].map((f) => (
               <label key={f.name} className="group block">
                 <span className="block text-[10px] uppercase tracking-[0.4em] text-foreground/55">{f.label}</span>
@@ -603,6 +654,7 @@ function Contact() {
                   name={f.name}
                   value={formData[f.name as keyof typeof formData]}
                   onChange={handleChange}
+                  placeholder={f.placeholder}
                   className="mt-3 w-full border-0 border-b border-foreground/30 bg-transparent pb-3 text-lg text-foreground outline-none transition-colors focus:border-brand"
                 />
               </label>
