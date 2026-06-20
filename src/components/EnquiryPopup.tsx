@@ -39,7 +39,14 @@ export default function EnquiryPopup() {
 
   return (
     <div
-      className={`${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3 pointer-events-none"} fixed bottom-4 left-4 right-4 w-[calc(100%-32px)] sm:bottom-6 sm:right-6 sm:left-auto sm:w-72 bg-[#F5F0E8] border border-[rgba(139,26,26,0.20)] rounded-[4px] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.12)] transition-opacity transform duration-[350ms] ease-out z-50`}
+      className={`
+        ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}
+        fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-32px)] sm:w-80
+        bg-[#F5F0E8] border border-[rgba(139,26,26,0.20)] rounded-[4px] p-6
+        shadow-[0_4px_24px_rgba(0,0,0,0.12)]
+        transition-all duration-[350ms] ease-out
+        z-50
+      `}
     >
       {/* Close button */}
       <button
