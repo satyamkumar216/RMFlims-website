@@ -6,6 +6,7 @@ import { Reveal, MaskReveal } from "@/components/Reveal";
 import { UnderlineLink } from "@/components/UnderlineLink";
 import { Footer } from "@/components/Footer";
 import { CenterCard } from "@/components/CenterCard";
+import EnquiryPopup from "@/components/EnquiryPopup";
 
 import heroImage from "@/assets/hero.png";
 import p1 from "@/assets/portfolio-1.jpg";
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Rounakmanna Films crafts heirloom wedding films and bridal photography — quiet, cinematic, deeply Indian.",
+          "Rounakmanna Films crafts heirloom wedding films and bridal photography — quiet, cinematic, deeply Indian. Book us to preserve your most memorable moments, forever.",
       },
       { property: "og:title", content: "Rounakmanna Films" },
       {
@@ -53,6 +54,7 @@ function Home() {
       <SoulCinema />
       <Contact />
       <Footer />
+      <EnquiryPopup />
       <WhatsAppFab />
     </main>
   );
