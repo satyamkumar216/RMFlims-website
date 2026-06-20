@@ -234,20 +234,29 @@ const services = [
   },
   { 
     n: "04", 
+    id: "podcast-shoot",
+    title: "Podcast Shoot", 
+    body: "Multi-cam production and pristine sound engineering for modern dialogues. Tailored studio setups, broadcast-ready acoustics, and post-production flow designed for impactful conversations.", 
+    tags: ["Talk Shows", "Interviews", "Audio & Video"],
+    span: "md:col-span-4",
+    image: p3
+  },
+  { 
+    n: "05", 
     id: "reel-shoot",
     title: "Reel Shoot", 
     body: "Vertical cinematic storytelling optimized for social impact. Crisp transitions and highly engaging vertical narratives.", 
     tags: ["Vertical Cinema", "Reels", "Commercial"],
-    span: "md:col-span-6",
+    span: "md:col-span-4",
     image: p4
   },
   { 
-    n: "05", 
+    n: "06", 
     id: "edit-color",
     title: "Edit & Color", 
     body: "Retouching, editorial grade, and beauty finishing. Precise frame-by-frame craft that elevates the original take.", 
     tags: ["Color Grading", "Post Production", "Beauty Edit"],
-    span: "md:col-span-6",
+    span: "md:col-span-4",
     image: p5
   },
 ];
