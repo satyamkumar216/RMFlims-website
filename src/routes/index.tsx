@@ -147,7 +147,7 @@ function Marquee() {
   const items = ["Weddings", "Bridal Films", "Editorial", "Cinematography", "Post-Production", "Stills"];
   return (
     <div className="relative mt-12 md:mt-24 overflow-hidden border-y border-foreground/15 py-6">
-      <div className="flex animate-[scroll_36s_linear_infinite] gap-12 whitespace-nowrap font-display text-[10vw] font-medium italic tracking-tight text-foreground/75 md:text-[5vw]">
+      <div className="flex animate-marquee gap-12 whitespace-nowrap font-display text-[10vw] font-medium italic tracking-tight text-foreground/75 md:text-[5vw]">
         {Array.from({ length: 4 }).flatMap((_, k) =>
           items.map((i, idx) => (
             <span key={`${k}-${idx}`} className="inline-flex items-center gap-12">
@@ -157,7 +157,20 @@ function Marquee() {
           )),
         )}
       </div>
-      <style>{`@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
+      <style>{`
+        @keyframes scroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: scroll 16s linear infinite;
+        }
+        @media (min-width: 768px) {
+          .animate-marquee {
+            animation: scroll 36s linear infinite;
+          }
+        }
+      `}</style>
     </div>
   );
 }
