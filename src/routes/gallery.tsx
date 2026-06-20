@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo-removebg-preview.png";
 import { Footer } from "@/components/Footer";
+import { CustomCursor } from "@/components/CustomCursor";
 
 // Import all portfolio images
 import p1 from "@/assets/portfolio-1.jpg";
@@ -51,6 +52,7 @@ function GalleryPage() {
 
   return (
     <div id="top" className="min-h-screen bg-background text-foreground paper-grain px-4 py-6 md:px-12 md:py-12 flex flex-col">
+      <CustomCursor />
       {/* Header */}
       <header className="flex items-center justify-between border-b border-foreground/10 pb-6 md:pb-8">
         <Link to="/" className="flex items-center gap-2">

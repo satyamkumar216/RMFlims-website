@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { z } from "zod";
 import logo from "@/assets/logo-removebg-preview.png";
 import { Footer } from "@/components/Footer";
+import { CustomCursor } from "@/components/CustomCursor";
 
 const packagesSearchSchema = z.object({
   service: z.string().optional(),
@@ -17,8 +18,9 @@ const serviceTabs = [
   { id: "wedding-films", label: "Wedding Films", number: "01" },
   { id: "bridal-portraits", label: "Bridal Portraits", number: "02" },
   { id: "model-photoshoot", label: "Model Photoshoot", number: "03" },
-  { id: "reel-shoot", label: "Reel Shoot", number: "04" },
-  { id: "edit-color", label: "Edit & Color", number: "05" },
+  { id: "podcast-shoot", label: "Podcast Shoot", number: "04" },
+  { id: "reel-shoot", label: "Reel Shoot", number: "05" },
+  { id: "edit-color", label: "Edit & Color", number: "06" },
 ];
 
 const packagesData = {
@@ -115,6 +117,20 @@ const packagesData = {
       tagline: "Couture Editorial"
     }
   ],
+  "podcast-shoot": [
+    {
+      title: "Podcast Production",
+      desc: "Full multi-cam podcast capture session, tailored acoustics, and professional audio/video master.",
+      features: [
+        "Up to 2 Hours of studio recording session",
+        "Multi-camera setup (up to 3 angles) with 4K cameras",
+        "Broadcast-grade multi-track audio recording & levelling",
+        "Full video edit with basic cuts, audio syncing & mastering",
+        "3 high-impact social media short teasers/reels from the episode"
+      ],
+      tagline: "Studio Session"
+    }
+  ],
   "reel-shoot": [
     {
       title: "The Reel Set",
@@ -183,6 +199,7 @@ function PackagesPage() {
 
   return (
     <div id="top" className="min-h-screen bg-background text-foreground paper-grain px-4 py-6 md:px-12 md:py-12 flex flex-col">
+      <CustomCursor />
       {/* Header */}
       <header className="flex items-center justify-between border-b border-foreground/10 pb-6 md:pb-8">
         <Link to="/" className="flex items-center gap-2">
