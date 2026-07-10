@@ -229,21 +229,21 @@ const services = [
   },
   { 
     n: "02", 
-    id: "bridal-portraits",
-    title: "Bridal Portraits", 
-    body: "Editorial-grade portraiture capturing the grace, ornaments, and heirloom moments of brides.", 
-    tags: ["Pre-wedding", "Bridal Portrait", "Fine Art"],
+    id: "rice-ceremony",
+    title: "Rice Ceremony", 
+    body: "Capturing the sacred traditions and joyous moments of Annaprashan with cinematic grace and authenticity.", 
+    tags: ["Annaprashan", "Tradition", "Event"],
     span: "md:col-span-4",
-    image: heroBride
+    image: p6
   },
   { 
     n: "03", 
-    id: "model-photoshoot",
-    title: "Model Photoshoot", 
-    body: "Magazine-grade high fashion modeling portfolios. Sculpted lighting, tailored compositions, and couture art direction.", 
-    tags: ["Fashion", "Portfolio", "Editorial"],
+    id: "product-shoot-jewellery",
+    title: "Product Shoot (Jewellery)", 
+    body: "Highlighting the intricate details and brilliance of fine jewellery through expert macro photography and lighting.", 
+    tags: ["Macro", "Commercial", "Jewellery"],
     span: "md:col-span-4",
-    image: manifestoRight
+    image: p1
   },
   { 
     n: "04", 
@@ -256,19 +256,28 @@ const services = [
   },
   { 
     n: "05", 
-    id: "reel-shoot",
-    title: "Reel Shoot", 
+    id: "model-photoshoot",
+    title: "Model Photoshoot", 
+    body: "Magazine-grade high fashion modeling portfolios. Sculpted lighting, tailored compositions, and couture art direction.", 
+    tags: ["Fashion", "Portfolio", "Editorial"],
+    span: "md:col-span-4",
+    image: manifestoRight
+  },
+  { 
+    n: "06", 
+    id: "reel-instagram",
+    title: "Reel (Instagram)", 
     body: "Vertical cinematic storytelling optimized for social impact. Crisp transitions and highly engaging vertical narratives.", 
-    tags: ["Vertical Cinema", "Reels", "Commercial"],
+    tags: ["Vertical Cinema", "Reels", "Social Media"],
     span: "md:col-span-4",
     image: p4
   },
   { 
-    n: "06", 
-    id: "edit-color",
-    title: "Edit & Color", 
-    body: "Retouching, editorial grade, and beauty finishing. Precise frame-by-frame craft that elevates the original take.", 
-    tags: ["Color Grading", "Post Production", "Beauty Edit"],
+    n: "07", 
+    id: "portfolio-shoot",
+    title: "Portfolio Shoot", 
+    body: "Professional portfolio shoots tailored to showcase your unique personality and talent, crafted with editorial precision.", 
+    tags: ["Headshots", "Casting", "Professional"],
     span: "md:col-span-4",
     image: p5
   },
