@@ -17,10 +17,10 @@ export const Route = createFileRoute("/packages")({
 const serviceTabs = [
   { id: "wedding-films", label: "Wedding Films", number: "01" },
   { id: "rice-ceremony", label: "Rice Ceremony", number: "02" },
-  { id: "product-shoot-jewellery", label: "Product Shoot (Jewellery)", number: "03" },
+  { id: "product-shoot", label: "Product Shoot", number: "03" },
   { id: "podcast-shoot", label: "Podcast Shoot", number: "04" },
   { id: "model-photoshoot", label: "Model Photoshoot", number: "05" },
-  { id: "reel-instagram", label: "Reel (Instagram)", number: "06" },
+  { id: "instagram-reel-shoot", label: "Instagram Reel Shoot", number: "06" },
   { id: "portfolio-shoot", label: "Portfolio Shoot", number: "07" },
 ];
 
@@ -92,6 +92,20 @@ const packagesData = {
       tagline: "Fine Art Keepsake"
     }
   ],
+  "product-shoot": [
+    {
+      title: "Jewellery Shoot",
+      desc: "Highlighting the intricate details and brilliance of fine jewellery through expert macro photography and lighting.",
+      features: [
+        "Professional studio macro lighting setup",
+        "High-resolution close-up detail shots",
+        "Retouching & focus stacking for maximum sharpness",
+        "15 fully retouched commercial grade images",
+        "Delivery in high-resolution digital format"
+      ],
+      tagline: "Commercial Macro"
+    }
+  ],
   "model-photoshoot": [
     {
       title: "The Portfolio Lookbook",
@@ -132,7 +146,7 @@ const packagesData = {
       tagline: "Studio Session"
     }
   ],
-  "reel-instagram": [
+  "instagram-reel-shoot": [
     {
       title: "The Reel Set",
       desc: "Cinematic vertical videos designed to tell a story and capture audience attention.",

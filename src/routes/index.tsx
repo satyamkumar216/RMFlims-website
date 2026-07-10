@@ -238,8 +238,8 @@ const services = [
   },
   { 
     n: "03", 
-    id: "product-shoot-jewellery",
-    title: "Product Shoot (Jewellery)", 
+    id: "product-shoot",
+    title: "Product Shoot", 
     body: "Highlighting the intricate details and brilliance of fine jewellery through expert macro photography and lighting.", 
     tags: ["Macro", "Commercial", "Jewellery"],
     span: "md:col-span-4",
@@ -265,8 +265,8 @@ const services = [
   },
   { 
     n: "06", 
-    id: "reel-instagram",
-    title: "Reel (Instagram)", 
+    id: "instagram-reel-shoot",
+    title: "Instagram Reel Shoot", 
     body: "Vertical cinematic storytelling optimized for social impact. Crisp transitions and highly engaging vertical narratives.", 
     tags: ["Vertical Cinema", "Reels", "Social Media"],
     span: "md:col-span-4",
