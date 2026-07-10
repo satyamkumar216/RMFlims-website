@@ -434,17 +434,19 @@ function Portfolio() {
               return <CenterCard key="center-card" />;
             }
 
+            const portfolioItem = item as { originalIndex: number; src: string; title: string; meta: string; w: number; h: number; type: string; };
+
             return (
               <PortfolioItem
                 key={i}
-                src={item.src!}
-                title={item.title!}
-                meta={item.meta!}
-                width={item.w!}
-                height={item.h!}
+                src={portfolioItem.src}
+                title={portfolioItem.title}
+                meta={portfolioItem.meta}
+                width={portfolioItem.w}
+                height={portfolioItem.h}
                 speed={0.05 + (i % 3) * 0.03}
                 className="aspect-[4/5]"
-                onClick={() => setActiveIdx(item.originalIndex!)}
+                onClick={() => setActiveIdx(portfolioItem.originalIndex)}
               />
             );
           })}

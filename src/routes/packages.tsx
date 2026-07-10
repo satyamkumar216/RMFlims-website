@@ -66,6 +66,19 @@ const packagesData = {
       tagline: "The Masterpiece Edit"
     }
   ],
+  "rice-ceremony": [
+    {
+      title: "The Heritage Ceremony",
+      desc: "Capturing the sacred traditions and joyous moments of Annaprashan with cinematic grace and authenticity.",
+      features: [
+        "1 to 2 Minute Cinematic Highlight Film",
+        "Traditional ritual coverage",
+        "Single Director-Cinematographer coverage",
+        "Raw footage delivered via high-speed digital gallery"
+      ],
+      tagline: "Sacred Traditions"
+    }
+  ],
   "bridal-portraits": [
     {
       title: "The Portrait Session",
@@ -130,6 +143,20 @@ const packagesData = {
         "Styling & makeup artist coordination support"
       ],
       tagline: "Couture Editorial"
+    }
+  ],
+  "portfolio-shoot": [
+    {
+      title: "Professional Portfolio",
+      desc: "Professional portfolio shoots tailored to showcase your unique personality and talent.",
+      features: [
+        "2 hours of dedicated portrait session",
+        "2 distinct outfit changes / looks",
+        "10 fully-retouched editorial frames",
+        "High-resolution digital proof gallery",
+        "Professional studio lighting setup"
+      ],
+      tagline: "Personal Branding"
     }
   ],
   "podcast-shoot": [
