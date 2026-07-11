@@ -179,10 +179,25 @@ async function generateHeroBackground() {
   }
 }
 
+async function generateMainHero() {
+  const mainHeroFile = path.join(process.cwd(), 'src/assets/FINAL.png');
+  if (fs.existsSync(mainHeroFile)) {
+    const data = await processImage(mainHeroFile, 'hero/FINAL.png');
+    fs.writeFileSync(
+      path.join(OUT_DIR, 'hero-main-manifest.json'),
+      JSON.stringify(data, null, 2)
+    );
+    console.log(`Generated hero-main-manifest.json.`);
+  }
+}
+
 async function run() {
   if (!fs.existsSync(OUT_DIR)) {
     fs.mkdirSync(OUT_DIR, { recursive: true });
   }
+  
+  console.log("Processing main hero (FINAL.png)...");
+  await generateMainHero();
   
   console.log("Processing hero background...");
   await generateHeroBackground();

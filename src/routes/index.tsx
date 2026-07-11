@@ -26,6 +26,10 @@ const heroBgManifest = (Object.keys(heroBgManifestData).length > 0) ? heroBgMani
 import whatWeDoManifestData from "@/data/what-we-do-manifest.json";
 const whatWeDoManifest = (Object.keys(whatWeDoManifestData).length > 0) ? whatWeDoManifestData : {};
 
+// @ts-ignore
+import heroMainManifestData from "@/data/hero-main-manifest.json";
+const heroMainManifest = (Object.keys(heroMainManifestData).length > 0) ? heroMainManifestData : null;
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -121,13 +125,25 @@ function Hero() {
   return (
     <section className="relative mx-auto mt-0 md:mt-8 w-full max-w-[1760px] px-4 md:px-8">
       <div className="relative h-[100svh] md:h-[78svh] md:min-h-[560px] w-full overflow-hidden">
-        <img
-          src={heroImage}
-          alt="Rounakmanna Films Hero Image"
-          width={1920}
-          height={1280}
-          className="h-full w-full object-cover"
-        />
+        {heroMainManifest ? (
+          <OptimizedImage
+            image={heroMainManifest}
+            alt="Rounakmanna Films Hero Image"
+            sizes="100vw"
+            className="w-full h-full"
+            imgClassName="object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+        ) : (
+          <img
+            src={heroImage}
+            alt="Rounakmanna Films Hero Image"
+            width={1920}
+            height={1280}
+            className="h-full w-full object-cover"
+          />
+        )}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,oklch(0.18_0.005_60/0.35)_100%)]" />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
           <h1 className="hero-breathe font-display text-[clamp(2.2rem,11vw,5rem)] md:text-[8.5vw] font-medium leading-[0.8] tracking-tight text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]">
