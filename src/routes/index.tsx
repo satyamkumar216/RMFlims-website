@@ -424,7 +424,7 @@ function Portfolio() {
     <section id="gallery" className="relative w-full min-h-[100vh] md:min-h-[120vh] overflow-hidden bg-background py-20">
       {/* Central CTA */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
-        <h2 className="font-serif text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight text-charcoal">
+        <h2 className="font-serif text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight text-black">
           Explore The Gallery
         </h2>
         <Link 
