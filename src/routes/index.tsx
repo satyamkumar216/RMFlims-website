@@ -211,7 +211,7 @@ function About() {
 }
 
 /* ---------------- SERVICES ---------------- */
-const whatWeDoImports = import.meta.glob('@/assets/what-we-do/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+const whatWeDoImports = import.meta.glob('/src/assets/what-we-do/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
 const whatWeDoImages: Record<string, string> = {};
 Object.keys(whatWeDoImports).forEach(path => {
   const folder = path.split('/').slice(-2, -1)[0];
