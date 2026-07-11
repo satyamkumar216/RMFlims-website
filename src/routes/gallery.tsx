@@ -4,28 +4,35 @@ import logo from "@/assets/logo-removebg-preview.png";
 import { Footer } from "@/components/Footer";
 import { CustomCursor } from "@/components/CustomCursor";
 
-// Import all portfolio images
-import p1 from "@/assets/portfolio-1.jpg";
-import p2 from "@/assets/portfolio-2.jpg";
-import p3 from "@/assets/portfolio-3.jpg";
-import p4 from "@/assets/portfolio-4.jpg";
-import p5 from "@/assets/portfolio-5.jpg";
-import p6 from "@/assets/portfolio-6.jpg";
-import heroBride from "@/assets/hero-bride.jpg";
-
 export const Route = createFileRoute("/gallery")({
   component: GalleryPage,
 });
 
-const galleryItems = [
-  { id: 1, src: p1, title: "Silver Halide", category: "Editorial", year: "2025", aspect: "aspect-[4/5] md:col-span-1" },
-  { id: 2, src: p2, title: "Anika & Rohan", category: "Weddings", year: "2025", aspect: "aspect-[16/10] md:col-span-2" },
-  { id: 3, src: p3, title: "Behind the Set", category: "Editorial", year: "2024", aspect: "aspect-square md:col-span-1" },
-  { id: 4, src: p4, title: "Crimson Veil", category: "Bridal", year: "2025", aspect: "aspect-[3/4] md:col-span-1" },
-  { id: 5, src: p5, title: "Weightless", category: "Editorial", year: "2024", aspect: "aspect-[16/10] md:col-span-2" },
-  { id: 6, src: p6, title: "Last Light", category: "Weddings", year: "2024", aspect: "aspect-[4/5] md:col-span-1" },
-  { id: 7, src: heroBride, title: "Golden Hour Bride", category: "Bridal", year: "2025", aspect: "aspect-[3/4] md:col-span-1" },
-];
+const imageImports = import.meta.glob('@/assets/gallery/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+
+const galleryItems = Object.keys(imageImports).map((path, index) => {
+  const src = imageImports[path];
+  const parts = path.split('/');
+  const filenameWithExt = parts.pop() || '';
+  const folder = parts.pop() || 'Uncategorized';
+  
+  const category = folder.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  const title = filenameWithExt.split('.')[0].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+  const aspects = ["aspect-[4/5] md:col-span-1", "aspect-[16/10] md:col-span-2", "aspect-square md:col-span-1", "aspect-[3/4] md:col-span-1"];
+  const aspect = aspects[index % aspects.length];
+
+  return {
+    id: index + 1,
+    src,
+    title,
+    category,
+    year: new Date().getFullYear().toString(),
+    aspect
+  };
+});
+
+const uniqueCategories = ["All", ...Array.from(new Set(galleryItems.map(item => item.category)))];
 
 function GalleryPage() {
   const [filter, setFilter] = useState("All");
@@ -80,7 +87,7 @@ function GalleryPage() {
 
         {/* Filter Controls */}
         <div className="flex flex-wrap justify-center gap-2 md:gap-8 mb-5 md:mb-16">
-          {["All", "Weddings", "Bridal", "Editorial"].map((cat) => (
+          {uniqueCategories.map((cat) => (
             <button
               key={cat}
               onClick={() => {

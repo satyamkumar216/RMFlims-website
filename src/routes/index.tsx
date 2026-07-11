@@ -11,12 +11,12 @@ import EnquiryPopup from "@/components/EnquiryPopup";
 import heroImage from "@/assets/FINAL.png";
 import weddingFilmsImg from "@/assets/wedding-films-new.jpg";
 import riceCeremonyImg from "@/assets/rice-ceremony.jpg";
-import p1 from "@/assets/portfolio-1.jpg";
-import p2 from "@/assets/portfolio-2.jpg";
-import p3 from "@/assets/portfolio-3.jpg";
-import p4 from "@/assets/portfolio-4.jpg";
-import p5 from "@/assets/portfolio-5.jpg";
-import p6 from "@/assets/portfolio-6.jpg";
+import p1 from "@/assets/gallery/Editorial/portfolio-1.jpg";
+import p2 from "@/assets/gallery/Weddings/portfolio-2.jpg";
+import p3 from "@/assets/gallery/Editorial/portfolio-3.jpg";
+import p4 from "@/assets/gallery/Bridal/portfolio-4.jpg";
+import p5 from "@/assets/gallery/Editorial/portfolio-5.jpg";
+import p6 from "@/assets/gallery/Weddings/portfolio-6.jpg";
 import logo from "@/assets/logo-removebg-preview.png";
 import manifestoLeft from "@/assets/manifesto-left.png";
 import manifestoRight from "@/assets/manifesto-right.png";
@@ -378,22 +378,25 @@ function Services() {
 }
 
 /* ---------------- PORTFOLIO ---------------- */
-const works = [
-  { src: p1, title: "Silver Halide", meta: "Editorial · 2025", w: 1024, h: 1280 },
-  { src: p2, title: "Anika & Rohan", meta: "Wedding Film · 2025", w: 1600, h: 1024 },
-  { src: p3, title: "Behind the Set", meta: "Documentary · 2024", w: 1024, h: 1024 },
-  { src: p4, title: "Crimson Veil", meta: "Bridal · 2025", w: 1024, h: 1400 },
-  { src: p5, title: "Weightless", meta: "Fashion Film · 2024", w: 1400, h: 1024 },
-  { src: p6, title: "Last Light", meta: "Wedding · 2024", w: 1024, h: 1280 },
-  { src: heroBride, title: "Golden Hour Bride", meta: "Bridal · 2025", w: 1024, h: 1350 },
-  { src: manifestoCouple, title: "Sacred Tapestry", meta: "Weddings · 2025", w: 1600, h: 1024 },
-  { src: p1, title: "Vintage Frames", meta: "Editorial · 2024", w: 1024, h: 1280 },
-  { src: p2, title: "Eternal Vows", meta: "Wedding · 2025", w: 1600, h: 1024 },
-  { src: p3, title: "The Narrative", meta: "Documentary · 2025", w: 1024, h: 1024 },
-  { src: p4, title: "Saffron Veil", meta: "Bridal · 2024", w: 1024, h: 1400 },
-  { src: p5, title: "In Motion", meta: "Fashion Film · 2025", w: 1400, h: 1024 },
-  { src: p6, title: "First Dance", meta: "Wedding · 2025", w: 1024, h: 1280 }
-];
+const imageImports = import.meta.glob('@/assets/gallery/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+
+const dynamicWorks = Object.keys(imageImports).map((path, i) => {
+  const parts = path.split('/');
+  const filename = parts.pop() || '';
+  const folder = parts.pop() || 'Uncategorized';
+  const category = folder.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  const title = filename.split('.')[0].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  return {
+    src: imageImports[path],
+    title,
+    meta: `${category} · ${new Date().getFullYear()}`,
+    w: i % 2 === 0 ? 1024 : 1600,
+    h: i % 3 === 0 ? 1280 : 1024,
+  };
+});
+
+// Safely generate 14 items for the layout (repeating if we have fewer than 14 photos currently)
+const works = Array.from({ length: 14 }).map((_, i) => dynamicWorks[i % dynamicWorks.length] || { src: p1, title: "Placeholder", meta: "", w: 1024, h: 1024 });
 
 function Portfolio() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
