@@ -30,3 +30,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Auto-generated image assets and manifests
+public/optimized/
+src/data/*-manifest.json

@@ -15,6 +15,16 @@ import manifestoRight from "@/assets/manifesto-right.png";
 import manifestoBoat from "@/assets/manifesto-boat.png";
 import manifestoCouple from "@/assets/manifesto-couple.png";
 import heroBride from "@/assets/hero-bride.jpg";
+import { OptimizedImage } from "@/components/OptimizedImage";
+
+// Add this since we're using it in the component but it might be missing if the JSON isn't generated yet
+import heroBgManifestData from "@/data/hero-bg-manifest.json";
+// In case it's empty or fails
+const heroBgManifest = (Object.keys(heroBgManifestData).length > 0) ? heroBgManifestData : null;
+
+// @ts-ignore
+import whatWeDoManifestData from "@/data/what-we-do-manifest.json";
+const whatWeDoManifest = (Object.keys(whatWeDoManifestData).length > 0) ? whatWeDoManifestData : {};
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -211,14 +221,15 @@ function About() {
 }
 
 /* ---------------- SERVICES ---------------- */
-const whatWeDoImports = import.meta.glob('/src/assets/what-we-do/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
-const whatWeDoImages: Record<string, string> = {};
-Object.keys(whatWeDoImports).forEach(path => {
-  const folder = path.split('/').slice(-2, -1)[0];
-  if (!whatWeDoImages[folder]) {
-    whatWeDoImages[folder] = whatWeDoImports[path];
-  }
-});
+
+
+const fallbackImage = {
+  src: heroBride,
+  srcSet: '',
+  blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=', // transparent pixel
+  width: 800,
+  height: 600
+};
 
 const services = [
   { 
@@ -228,7 +239,7 @@ const services = [
     body: "Cinema-first wedding storytelling. Documentary at heart, directed with vertical and landscape intent.", 
     tags: ["Feature Film", "Highlight Reel", "Stills"],
     span: "md:col-span-4",
-    image: whatWeDoImages["wedding-films"] || heroBride
+    image: whatWeDoManifest["wedding-films"] || fallbackImage
   },
   { 
     n: "02", 
@@ -237,7 +248,7 @@ const services = [
     body: "Capturing the sacred traditions and joyous moments of Annaprashan with cinematic grace and authenticity.", 
     tags: ["Annaprashan", "Tradition", "Event"],
     span: "md:col-span-4",
-    image: whatWeDoImages["rice-ceremony"] || heroBride
+    image: whatWeDoManifest["rice-ceremony"] || fallbackImage
   },
   { 
     n: "03", 
@@ -246,7 +257,7 @@ const services = [
     body: "Highlighting the intricate details and brilliance of fine jewellery through expert macro photography and lighting.", 
     tags: ["Macro", "Commercial", "Jewellery"],
     span: "md:col-span-4",
-    image: whatWeDoImages["product-shoot"] || heroBride
+    image: whatWeDoManifest["product-shoot"] || fallbackImage
   },
   { 
     n: "04", 
@@ -255,7 +266,7 @@ const services = [
     body: "Multi-cam production and pristine sound engineering for modern dialogues. Tailored studio setups, broadcast-ready acoustics, and post-production flow designed for impactful conversations.", 
     tags: ["Talk Shows", "Interviews", "Audio & Video"],
     span: "md:col-span-4",
-    image: whatWeDoImages["podcast-shoot"] || heroBride
+    image: whatWeDoManifest["podcast-shoot"] || fallbackImage
   },
   { 
     n: "05", 
@@ -264,7 +275,7 @@ const services = [
     body: "Magazine-grade high fashion modeling portfolios. Sculpted lighting, tailored compositions, and couture art direction.", 
     tags: ["Fashion", "Portfolio", "Editorial"],
     span: "md:col-span-4",
-    image: whatWeDoImages["model-photoshoot"] || heroBride
+    image: whatWeDoManifest["model-photoshoot"] || fallbackImage
   },
   { 
     n: "06", 
@@ -273,7 +284,7 @@ const services = [
     body: "Vertical cinematic storytelling optimized for social impact. Crisp transitions and highly engaging vertical narratives.", 
     tags: ["Vertical Cinema", "Reels", "Social Media"],
     span: "md:col-span-4",
-    image: whatWeDoImages["instagram-reel-shoot"] || heroBride
+    image: whatWeDoManifest["instagram-reel-shoot"] || fallbackImage
   },
   { 
     n: "07", 
@@ -282,7 +293,7 @@ const services = [
     body: "Professional portfolio shoots tailored to showcase your unique personality and talent, crafted with editorial precision.", 
     tags: ["Headshots", "Casting", "Professional"],
     span: "md:col-span-4",
-    image: whatWeDoImages["portfolio-shoot"] || heroBride
+    image: whatWeDoManifest["portfolio-shoot"] || fallbackImage
   },
 ];
 
@@ -320,10 +331,13 @@ function Services() {
             >
               {/* Image Container */}
               <div className="relative w-full h-48 md:h-56 overflow-hidden">
-                <img
-                  src={s.image}
+                <OptimizedImage
+                  image={s.image}
                   alt={s.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="w-full h-full"
+                  imgClassName="object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
                 />
                 {/* Blur and fade-out overlay at the bottom */}
                 <div 
@@ -384,12 +398,23 @@ function Portfolio() {
   return (
     <section id="gallery" className="relative w-full min-h-[100vh] md:min-h-[120vh] overflow-hidden bg-background py-20 flex flex-col items-center justify-center">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="/gallery/gallery-hero-bg.png" 
-          alt="Gallery Hero Background" 
-          className="w-full h-full object-cover"
-        />
+      <div className="absolute inset-0 z-0 bg-charcoal">
+        {heroBgManifest ? (
+          <OptimizedImage
+            image={heroBgManifest}
+            alt="Gallery Hero Background"
+            sizes="100vw"
+            className="w-full h-full"
+            imgClassName="object-cover"
+            loading="eager"
+          />
+        ) : (
+          <img 
+            src="/gallery/gallery-hero-bg.png" 
+            alt="Gallery Hero Background" 
+            className="w-full h-full object-cover"
+          />
+        )}
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/60 md:bg-black/40"></div>
       </div>

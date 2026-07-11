@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import logo from "@/assets/logo-removebg-preview.png";
 import { Footer } from "@/components/Footer";
 import { CustomCursor } from "@/components/CustomCursor";
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 export const Route = createFileRoute("/gallery")({
   component: GalleryPage,
@@ -108,14 +109,16 @@ function GalleryPage() {
               onClick={() => setActiveIdx(index)}
               className={`break-inside-avoid mb-4 md:mb-6 group relative overflow-hidden bg-charcoal rounded-[12px] md:rounded-2xl cursor-pointer shadow-md transition-all duration-700 hover:shadow-xl`}
             >
-              <img
-                src={item.src}
+              <OptimizedImage
+                image={item}
                 alt={item.title}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                className="w-full h-auto aspect-auto rounded-[12px] md:rounded-2xl"
+                imgClassName="object-cover transition-transform duration-1000 group-hover:scale-105"
                 loading="lazy"
-                className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4 md:p-6" />
-              <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4 md:p-6 rounded-[12px] md:rounded-2xl pointer-events-none" />
+              <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 pointer-events-none">
                 <span className="text-[10px] uppercase tracking-[0.1em] md:tracking-[0.3em] text-white/70 block whitespace-nowrap">{item.category} · {item.year}</span>
                 <h3 className="font-display text-[13px] md:text-lg sm:text-xl font-medium text-white mt-1 break-words leading-tight">{item.title}</h3>
               </div>

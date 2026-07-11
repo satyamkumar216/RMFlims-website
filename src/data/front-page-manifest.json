@@ -1,38 +1,74 @@
 [
   {
-    "src": "/gallery/front-page/PYM_1468.JPG",
+    "src": "/optimized/gallery/front-page/PYM_1468-1200w.webp",
+    "srcSet": "/optimized/gallery/front-page/PYM_1468-400w.webp 400w, /optimized/gallery/front-page/PYM_1468-800w.webp 800w, /optimized/gallery/front-page/PYM_1468-1200w.webp 1200w, /optimized/gallery/front-page/PYM_1468-1600w.webp 1600w",
+    "blurDataURL": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQBACdASoUAA0APzmEuVOvKKWisAgB4CcJbACdMoMYAE4UvOdPtxDo/w3AAPxg/uJxvBOyybc2ovtG7/7wQUVpwv2lhRJeL9EA7NOd4eOc3X257cpdvPnLDFs8NaK8T7gUBvgf2kln3mqk4lPq5N3VBD0oXM7Th41iZJI0P8HjR5AA",
+    "width": 6048,
+    "height": 4032,
     "title": "PYM_1468"
   },
   {
-    "src": "/gallery/front-page/PYM_1471.JPG",
+    "src": "/optimized/gallery/front-page/PYM_1471-1200w.webp",
+    "srcSet": "/optimized/gallery/front-page/PYM_1471-400w.webp 400w, /optimized/gallery/front-page/PYM_1471-800w.webp 800w, /optimized/gallery/front-page/PYM_1471-1200w.webp 1200w, /optimized/gallery/front-page/PYM_1471-1600w.webp 1600w",
+    "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAQBACdASoUAA0APzmEuVOvKKWisAgB4CcJbACdABaPMe2lKzUIwTa6AAD+ZkiUVDOw4IwcrP6DGvSBwQMdeIpCF8LW6NSi5Oiix00lybzx+nLoTri/KMwxMSrO1Z8bfFD9otAmzCO8oVw7aMIZ2VlbaCsxE5egAAA=",
+    "width": 6048,
+    "height": 4032,
     "title": "PYM_1471"
   },
   {
-    "src": "/gallery/front-page/PYM_3082.JPG",
+    "src": "/optimized/gallery/front-page/PYM_3082-1200w.webp",
+    "srcSet": "/optimized/gallery/front-page/PYM_3082-400w.webp 400w, /optimized/gallery/front-page/PYM_3082-800w.webp 800w, /optimized/gallery/front-page/PYM_3082-1200w.webp 1200w, /optimized/gallery/front-page/PYM_3082-1600w.webp 1600w",
+    "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAABQAwCdASoUAA0APzmGuVOvKSWisAgB4CcJYwAAV5DWR9TFAAD+3OvMBWchVRZsWDgdOUC0YIF4A9dIZfejpanXxeXM3/2hQBAAAA==",
+    "width": 6048,
+    "height": 4032,
     "title": "PYM_3082"
   },
   {
-    "src": "/gallery/front-page/PYM_3109 copy.jpg",
+    "src": "/optimized/gallery/front-page/PYM_3109 copy-1200w.webp",
+    "srcSet": "/optimized/gallery/front-page/PYM_3109 copy-400w.webp 400w, /optimized/gallery/front-page/PYM_3109 copy-800w.webp 800w, /optimized/gallery/front-page/PYM_3109 copy-1200w.webp 1200w, /optimized/gallery/front-page/PYM_3109 copy-1600w.webp 1600w",
+    "blurDataURL": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAACwAwCdASoUAA0APzmEuVOvKKWisAgB4CcJbACdABRztIXRhM1mQAD+JRYUFLEqt8u01qb4vVXD3ykKkObajuOe0PUEis/Eu0vNtOHGwwl/13R0GAeom7+nsmy54Vi4S62WdXhcNNinE96vMMMMAAAA",
+    "width": 6184,
+    "height": 4122,
     "title": "PYM_3109 Copy"
   },
   {
-    "src": "/gallery/front-page/PYM_3111.JPG",
+    "src": "/optimized/gallery/front-page/PYM_3111-1200w.webp",
+    "srcSet": "/optimized/gallery/front-page/PYM_3111-400w.webp 400w, /optimized/gallery/front-page/PYM_3111-800w.webp 800w, /optimized/gallery/front-page/PYM_3111-1200w.webp 1200w, /optimized/gallery/front-page/PYM_3111-1600w.webp 1600w",
+    "blurDataURL": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADQAwCdASoUAA0APzmEuVOvKKWisAgB4CcJbACdABKl0N9iDda85YAA/U3tjYfhG+NwZKHiPTFHdtK2GoKPX7k38Zm6zmp6C14nPm5w6UQqT98XDIYjOx12hUoYI2dQLhktjxascv8Wm00wIpWxHHAt+eiEZEF+ZAAAAA==",
+    "width": 6048,
+    "height": 4032,
     "title": "PYM_3111"
   },
   {
-    "src": "/gallery/front-page/PYM_3143.JPG",
+    "src": "/optimized/gallery/front-page/PYM_3143-1200w.webp",
+    "srcSet": "/optimized/gallery/front-page/PYM_3143-400w.webp 400w, /optimized/gallery/front-page/PYM_3143-800w.webp 800w, /optimized/gallery/front-page/PYM_3143-1200w.webp 1200w, /optimized/gallery/front-page/PYM_3143-1600w.webp 1600w",
+    "blurDataURL": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAADQAwCdASoUAA0APzmEuVOvKKWisAgB4CcJbACdABI9Yq0kmuGoOAAA/s194jUv+n3NtDuRhWfwQ1hOzGCTz4fM3YHjQgeAphLZ5a0jWBLZsoLuAMNno26zK+TrbiCS+14fOqCYWHpxbEFI2ckaMw0w1DwAAA==",
+    "width": 6048,
+    "height": 4032,
     "title": "PYM_3143"
   },
   {
-    "src": "/gallery/front-page/WeddingFlims.JPG",
+    "src": "/optimized/gallery/front-page/WeddingFlims-1200w.webp",
+    "srcSet": "/optimized/gallery/front-page/WeddingFlims-400w.webp 400w, /optimized/gallery/front-page/WeddingFlims-800w.webp 800w, /optimized/gallery/front-page/WeddingFlims-1200w.webp 1200w, /optimized/gallery/front-page/WeddingFlims-1600w.webp 1600w",
+    "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAQBACdASoUAA0APzmEuVOvKKWisAgB4CcJbACdMoRwAB3vWrCNNwJrAAD+wh+23uotgl4J26LZO8Y0LqHHOwUh7164tqm7KLrBG4j10Mf62uLOFpZXBZxCd4YquYjKAjIRq/nr9iBlo5Wwv+x+6t9wQMNx6cNAAAA=",
+    "width": 6048,
+    "height": 4032,
     "title": "WeddingFlims"
   },
   {
-    "src": "/gallery/front-page/portfolio-4.jpg",
+    "src": "/optimized/gallery/front-page/portfolio-4-400w.webp",
+    "srcSet": "/optimized/gallery/front-page/portfolio-4-400w.webp 400w, /optimized/gallery/front-page/portfolio-4-800w.webp 800w, /optimized/gallery/front-page/portfolio-4-1024w.webp 1024w",
+    "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQBACdASoUABsAPzmGulOvKSWisAgB4CcJQBfnA8gTzERCzgNKjvDxgAD+plrlR+IgTeg7WSuHH70jtVzCGz/v41s5LRb2fIAv49pquZk/zmBCDmE8B8XPkL4hSA1CYYAAAA==",
+    "width": 1024,
+    "height": 1400,
     "title": "Portfolio 4"
   },
   {
-    "src": "/gallery/front-page/rice-ceremony.jpg",
+    "src": "/optimized/gallery/front-page/rice-ceremony-1200w.webp",
+    "srcSet": "/optimized/gallery/front-page/rice-ceremony-400w.webp 400w, /optimized/gallery/front-page/rice-ceremony-800w.webp 800w, /optimized/gallery/front-page/rice-ceremony-1200w.webp 1200w, /optimized/gallery/front-page/rice-ceremony-1600w.webp 1600w",
+    "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADQAwCdASoUAA0APzmEuVOvKKWisAgB4CcJbACdMoMzGCB+jfzSyKAA/nSemauCQYLK1+gIHD79Q2MShqGuBsFiOodsw18fVQo2wV0S3p/t6iidiN1EwhpcN9XJuByAw7YMwvuuDmUkuW6IAAA=",
+    "width": 6016,
+    "height": 4016,
     "title": "Rice Ceremony"
   }
 ]
