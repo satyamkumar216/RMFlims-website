@@ -323,7 +323,7 @@ function Services() {
                 <img
                   src={s.image}
                   alt={s.title}
-                  className="w-full h-full object-cover filter grayscale contrast-[1.05] transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Blur and fade-out overlay at the bottom */}
                 <div 
