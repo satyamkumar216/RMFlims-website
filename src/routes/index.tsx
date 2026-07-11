@@ -11,6 +11,7 @@ import EnquiryPopup from "@/components/EnquiryPopup";
 import heroImage from "@/assets/FINAL.png";
 import weddingFilmsImg from "@/assets/wedding-films-new.jpg";
 import riceCeremonyImg from "@/assets/rice-ceremony.jpg";
+import productShootImg from "@/assets/Produc.jpeg";
 import p1 from "@/assets/gallery/Editorial/PYM_3083.JPG";
 import p3 from "@/assets/gallery/Haldi/PYM_1468.JPG";
 import p4 from "@/assets/gallery/Bridal/PYM_3108.JPG";
@@ -243,7 +244,7 @@ const services = [
     body: "Highlighting the intricate details and brilliance of fine jewellery through expert macro photography and lighting.", 
     tags: ["Macro", "Commercial", "Jewellery"],
     span: "md:col-span-4",
-    image: p1
+    image: productShootImg
   },
   { 
     n: "04", 
