@@ -1,11 +1,15 @@
 [
   {
-    "src": "/gallery/front-page/PYM_3082.JPG",
-    "title": "PYM_3082"
+    "src": "/gallery/front-page/PYM_1468.JPG",
+    "title": "PYM_1468"
   },
   {
-    "src": "/gallery/front-page/PYM_3108.JPG",
-    "title": "PYM_3108"
+    "src": "/gallery/front-page/PYM_1471.JPG",
+    "title": "PYM_1471"
+  },
+  {
+    "src": "/gallery/front-page/PYM_3082.JPG",
+    "title": "PYM_3082"
   },
   {
     "src": "/gallery/front-page/PYM_3109 copy.jpg",
@@ -24,11 +28,11 @@
     "title": "WeddingFlims"
   },
   {
-    "src": "/gallery/front-page/hero-bride.jpg",
-    "title": "Hero Bride"
-  },
-  {
     "src": "/gallery/front-page/portfolio-4.jpg",
     "title": "Portfolio 4"
+  },
+  {
+    "src": "/gallery/front-page/rice-ceremony.jpg",
+    "title": "Rice Ceremony"
   }
 ]
