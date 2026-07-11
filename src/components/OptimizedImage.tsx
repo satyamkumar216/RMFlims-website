@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -18,6 +18,7 @@ export interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageEl
   className?: string;
   imgClassName?: string;
   loading?: 'lazy' | 'eager';
+  fetchPriority?: 'high' | 'low' | 'auto';
 }
 
 export function OptimizedImage({ 
@@ -27,9 +28,17 @@ export function OptimizedImage({
   className,
   imgClassName,
   loading = 'lazy',
+  fetchPriority,
   ...props 
 }: OptimizedImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setIsLoaded(true);
+    }
+  }, [image.src]);
 
   return (
     <div 
@@ -56,11 +65,14 @@ export function OptimizedImage({
       
       {/* Actual Image */}
       <img
+        ref={imgRef}
         src={image.src}
         srcSet={image.srcSet}
         sizes={sizes}
         alt={alt}
         loading={loading}
+        // @ts-ignore - React types might not fully support fetchpriority yet
+        fetchpriority={fetchPriority}
         onLoad={() => setIsLoaded(true)}
         className={twMerge(
           "absolute inset-0 w-full h-full transition-opacity duration-700 ease-out",

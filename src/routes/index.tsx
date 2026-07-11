@@ -407,6 +407,7 @@ function Portfolio() {
             className="w-full h-full"
             imgClassName="object-cover"
             loading="eager"
+            fetchPriority="high"
           />
         ) : (
           <img 
