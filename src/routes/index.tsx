@@ -116,7 +116,7 @@ function Hero() {
           alt="Rounakmanna Films Hero Image"
           width={1920}
           height={1280}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover grayscale contrast-105"
         />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,oklch(0.18_0.005_60/0.35)_100%)]" />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
@@ -323,7 +323,7 @@ function Services() {
                 <img
                   src={s.image}
                   alt={s.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Blur and fade-out overlay at the bottom */}
                 <div 
@@ -531,7 +531,7 @@ function SoulCinema() {
         <img 
           src={manifestoCouple} 
           alt="Traditional Bengali Couple Intimate Moment" 
-          className="absolute inset-0 h-full w-full object-cover opacity-55 scale-105 transition-transform duration-1000"
+          className="absolute inset-0 h-full w-full object-cover grayscale opacity-55 scale-105 transition-transform duration-1000"
         />
         {/* Radial Vignette Overlay */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.85)_100%)]" />

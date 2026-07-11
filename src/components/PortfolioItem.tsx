@@ -129,7 +129,7 @@ export function PortfolioItem({
           loading="lazy"
           width={width}
           height={height}
-          className={hover ? "port-img port-img-hover h-full w-full object-cover" : "port-img h-full w-full object-cover"}
+          className={hover ? "port-img port-img-hover h-full w-full object-cover grayscale" : "port-img h-full w-full object-cover grayscale"}
         />
       </div>
 

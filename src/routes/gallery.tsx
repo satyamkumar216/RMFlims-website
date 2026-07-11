@@ -112,7 +112,7 @@ function GalleryPage() {
                 src={item.src}
                 alt={item.title}
                 loading="lazy"
-                className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105"
+                className="w-full h-auto object-cover grayscale transition-transform duration-1000 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4 md:p-6" />
               <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500">
@@ -171,7 +171,7 @@ function GalleryPage() {
             <img 
               src={filteredItems[activeIdx].src} 
               alt={filteredItems[activeIdx].title} 
-              className="max-h-[72vh] sm:max-h-[75vh] max-w-full object-contain rounded-lg border border-white/15 animate-[zoomIn_0.4s_cubic-bezier(0.22,1,0.36,1)] shadow-2xl"
+              className="max-h-[72vh] sm:max-h-[75vh] max-w-full object-contain rounded-lg border border-white/15 animate-[zoomIn_0.4s_cubic-bezier(0.22,1,0.36,1)] shadow-2xl grayscale"
             />
             <div className="mt-6 text-center text-white">
               <p className="font-display text-sm uppercase tracking-[0.25em] text-white/60">
