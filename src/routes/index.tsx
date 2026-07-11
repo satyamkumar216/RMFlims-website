@@ -379,142 +379,33 @@ function Services() {
 }
 
 /* ---------------- PORTFOLIO ---------------- */
-import frontPageManifest from "@/data/front-page-manifest.json";
-
-const dynamicWorks = frontPageManifest.map((item, i) => {
-  return {
-    src: item.src,
-    title: item.title,
-    meta: `Front Page · ${new Date().getFullYear()}`,
-    w: i % 2 === 0 ? 1024 : 1600,
-    h: i % 3 === 0 ? 1280 : 1024,
-  };
-});
-
-// Safely generate 14 items for the layout (repeating if we have fewer than 14 photos currently)
-const works = Array.from({ length: 14 }).map((_, i) => dynamicWorks[i % dynamicWorks.length] || { src: heroBride, title: "Placeholder", meta: "", w: 1024, h: 1024 });
 
 function Portfolio() {
-  const [activeIdx, setActiveIdx] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (activeIdx === null) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setActiveIdx(null);
-      if (e.key === "ArrowLeft") setActiveIdx((prev) => (prev === null ? null : (prev - 1 + works.length) % works.length));
-      if (e.key === "ArrowRight") setActiveIdx((prev) => (prev === null ? null : (prev + 1) % works.length));
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeIdx]);
-
-  const scatteredPositions = [
-    "top-[2%] md:top-[5%] left-[-2%] -rotate-6 w-48 md:w-72",
-    "top-[15%] md:top-[12%] left-[18%] md:left-[22%] rotate-3 w-36 md:w-56",
-    "top-[8%] md:top-[10%] right-[20%] md:right-[26%] -rotate-2 w-32 md:w-48",
-    "top-[0%] md:top-[4%] right-[2%] md:right-[4%] rotate-6 w-48 md:w-72",
-    "top-[45%] md:top-[40%] left-[2%] md:left-[6%] rotate-2 w-40 md:w-60",
-    "top-[55%] md:top-[42%] right-[2%] md:right-[6%] -rotate-3 w-40 md:w-60",
-    "bottom-[5%] md:bottom-[2%] left-[8%] md:left-[12%] -rotate-6 w-44 md:w-64",
-    "bottom-[10%] md:bottom-[6%] left-[42%] md:left-[45%] rotate-1 w-36 md:w-48",
-    "bottom-[2%] md:bottom-[4%] right-[0%] md:right-[8%] rotate-4 w-48 md:w-72",
-  ];
-
   return (
-    <section id="gallery" className="relative w-full min-h-[100vh] md:min-h-[120vh] overflow-hidden bg-background py-20">
-      {/* Central CTA */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
-        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-black">
+    <section id="gallery" className="relative w-full min-h-[100vh] md:min-h-[120vh] overflow-hidden bg-background py-20 flex flex-col items-center justify-center">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/gallery/gallery-hero-bg.png" 
+          alt="Gallery Hero Background" 
+          className="w-full h-full object-cover"
+        />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/60 md:bg-black/40"></div>
+      </div>
+
+      {/* Central Content */}
+      <div className="relative z-20 flex flex-col items-center justify-center text-center px-4">
+        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg">
           Explore The Gallery
         </h2>
         <Link 
           to="/gallery" 
-          className="mt-8 px-8 py-3 rounded-full bg-gradient-to-r from-[#d946ef] to-[#f97316] text-white font-medium text-lg tracking-wide hover:opacity-90 hover:scale-105 transition-all shadow-lg pointer-events-auto"
+          className="mt-8 px-8 py-3 rounded-full bg-gradient-to-r from-[#d946ef] to-[#f97316] text-white font-medium text-lg tracking-wide hover:opacity-90 hover:scale-105 transition-all shadow-xl pointer-events-auto"
         >
           Start Now
         </Link>
       </div>
-
-      {/* Scattered Images */}
-      <div className="absolute inset-0 pointer-events-none z-10">
-        {works.slice(0, 9).map((work, i) => {
-          const positionClass = scatteredPositions[i % scatteredPositions.length];
-          return (
-            <div
-              key={i}
-              onClick={() => setActiveIdx(i)}
-              className={`absolute ${positionClass} pointer-events-auto cursor-pointer shadow-xl hover:scale-[1.15] hover:z-30 transition-transform duration-500 ease-out bg-white p-2 pb-8 md:p-3 md:pb-12 border border-black/5`}
-            >
-              <img
-                src={work.src}
-                alt={work.title}
-                className="w-full aspect-[4/5] object-cover"
-              />
-            </div>
-          );
-        })}
-      </div>
-
-
-      {/* Modern Lightbox Photo Preview Modal */}
-      {activeIdx !== null && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md transition-opacity duration-300"
-          onClick={() => setActiveIdx(null)}
-        >
-          {/* Close button */}
-          <button 
-            onClick={() => setActiveIdx(null)}
-            className="absolute right-6 top-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-transform duration-300 hover:rotate-90 hover:bg-white/20"
-          >
-            ✕
-          </button>
-          
-          {/* Previous button */}
-          <button 
-            onClick={(e) => {
-              e.stopPropagation();
-              setActiveIdx((prev) => (prev === null ? null : (prev - 1 + works.length) % works.length));
-            }}
-            className="absolute left-4 sm:left-6 top-1/2 z-50 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-105"
-          >
-            ←
-          </button>
-
-          {/* Next button */}
-          <button 
-            onClick={(e) => {
-              e.stopPropagation();
-              setActiveIdx((prev) => (prev === null ? null : (prev + 1) % works.length));
-            }}
-            className="absolute right-4 sm:right-6 top-1/2 z-50 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 hover:scale-105"
-          >
-            →
-          </button>
-
-          {/* Image content */}
-          <div 
-            className="relative max-h-[85vh] max-w-[90vw] flex flex-col items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img 
-              src={works[activeIdx].src} 
-              alt={works[activeIdx].title} 
-              className="max-h-[72vh] sm:max-h-[75vh] max-w-full object-contain rounded-lg border border-white/15 animate-[zoomIn_0.4s_cubic-bezier(0.22,1,0.36,1)] shadow-2xl"
-            />
-            <div className="mt-6 text-center text-white">
-              <p className="font-display text-sm uppercase tracking-[0.25em] text-white/60">{works[activeIdx].meta}</p>
-              <h3 className="font-display mt-2 text-2xl font-medium tracking-wide">{works[activeIdx].title}</h3>
-            </div>
-          </div>
-          <style>{`
-            @keyframes zoomIn {
-              from { transform: scale(0.96); opacity: 0; }
-              to { transform: scale(1); opacity: 1; }
-            }
-          `}</style>
-        </div>
-      )}
     </section>
   );
 }
