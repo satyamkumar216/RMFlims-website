@@ -9,13 +9,6 @@ import { CenterCard } from "@/components/CenterCard";
 import EnquiryPopup from "@/components/EnquiryPopup";
 
 import heroImage from "@/assets/FINAL.png";
-import weddingFilmsImg from "@/assets/wedding-films-new.jpg";
-import riceCeremonyImg from "@/assets/rice-ceremony.jpg";
-import productShootImg from "@/assets/Produc.jpeg";
-import p1 from "@/assets/gallery/Editorial/PYM_3083.JPG";
-import p3 from "@/assets/gallery/Haldi/PYM_1468.JPG";
-import p4 from "@/assets/gallery/Bridal/PYM_3108.JPG";
-import p5 from "@/assets/gallery/Weddings/PYM_3082.JPG";
 import logo from "@/assets/logo-removebg-preview.png";
 import manifestoLeft from "@/assets/manifesto-left.png";
 import manifestoRight from "@/assets/manifesto-right.png";
@@ -218,6 +211,15 @@ function About() {
 }
 
 /* ---------------- SERVICES ---------------- */
+const whatWeDoImports = import.meta.glob('@/assets/what-we-do/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+const whatWeDoImages: Record<string, string> = {};
+Object.keys(whatWeDoImports).forEach(path => {
+  const folder = path.split('/').slice(-2, -1)[0];
+  if (!whatWeDoImages[folder]) {
+    whatWeDoImages[folder] = whatWeDoImports[path];
+  }
+});
+
 const services = [
   { 
     n: "01", 
@@ -226,7 +228,7 @@ const services = [
     body: "Cinema-first wedding storytelling. Documentary at heart, directed with vertical and landscape intent.", 
     tags: ["Feature Film", "Highlight Reel", "Stills"],
     span: "md:col-span-4",
-    image: weddingFilmsImg
+    image: whatWeDoImages["wedding-films"] || heroBride
   },
   { 
     n: "02", 
@@ -235,7 +237,7 @@ const services = [
     body: "Capturing the sacred traditions and joyous moments of Annaprashan with cinematic grace and authenticity.", 
     tags: ["Annaprashan", "Tradition", "Event"],
     span: "md:col-span-4",
-    image: riceCeremonyImg
+    image: whatWeDoImages["rice-ceremony"] || heroBride
   },
   { 
     n: "03", 
@@ -244,7 +246,7 @@ const services = [
     body: "Highlighting the intricate details and brilliance of fine jewellery through expert macro photography and lighting.", 
     tags: ["Macro", "Commercial", "Jewellery"],
     span: "md:col-span-4",
-    image: productShootImg
+    image: whatWeDoImages["product-shoot"] || heroBride
   },
   { 
     n: "04", 
@@ -253,7 +255,7 @@ const services = [
     body: "Multi-cam production and pristine sound engineering for modern dialogues. Tailored studio setups, broadcast-ready acoustics, and post-production flow designed for impactful conversations.", 
     tags: ["Talk Shows", "Interviews", "Audio & Video"],
     span: "md:col-span-4",
-    image: p3
+    image: whatWeDoImages["podcast-shoot"] || heroBride
   },
   { 
     n: "05", 
@@ -262,7 +264,7 @@ const services = [
     body: "Magazine-grade high fashion modeling portfolios. Sculpted lighting, tailored compositions, and couture art direction.", 
     tags: ["Fashion", "Portfolio", "Editorial"],
     span: "md:col-span-4",
-    image: manifestoRight
+    image: whatWeDoImages["model-photoshoot"] || heroBride
   },
   { 
     n: "06", 
@@ -271,7 +273,7 @@ const services = [
     body: "Vertical cinematic storytelling optimized for social impact. Crisp transitions and highly engaging vertical narratives.", 
     tags: ["Vertical Cinema", "Reels", "Social Media"],
     span: "md:col-span-4",
-    image: p4
+    image: whatWeDoImages["instagram-reel-shoot"] || heroBride
   },
   { 
     n: "07", 
@@ -280,7 +282,7 @@ const services = [
     body: "Professional portfolio shoots tailored to showcase your unique personality and talent, crafted with editorial precision.", 
     tags: ["Headshots", "Casting", "Professional"],
     span: "md:col-span-4",
-    image: p5
+    image: whatWeDoImages["portfolio-shoot"] || heroBride
   },
 ];
 
