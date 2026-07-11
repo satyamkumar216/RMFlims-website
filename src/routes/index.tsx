@@ -8,7 +8,9 @@ import { Footer } from "@/components/Footer";
 import { CenterCard } from "@/components/CenterCard";
 import EnquiryPopup from "@/components/EnquiryPopup";
 
-import heroImage from "@/assets/PYM_3143.jpg";
+import heroImage from "@/assets/FINAL.png";
+import weddingFilmsImg from "@/assets/wedding-films-new.jpg";
+import riceCeremonyImg from "@/assets/rice-ceremony.jpg";
 import p1 from "@/assets/portfolio-1.jpg";
 import p2 from "@/assets/portfolio-2.jpg";
 import p3 from "@/assets/portfolio-3.jpg";
@@ -225,7 +227,7 @@ const services = [
     body: "Cinema-first wedding storytelling. Documentary at heart, directed with vertical and landscape intent.", 
     tags: ["Feature Film", "Highlight Reel", "Stills"],
     span: "md:col-span-4",
-    image: manifestoCouple
+    image: weddingFilmsImg
   },
   { 
     n: "02", 
@@ -234,7 +236,7 @@ const services = [
     body: "Capturing the sacred traditions and joyous moments of Annaprashan with cinematic grace and authenticity.", 
     tags: ["Annaprashan", "Tradition", "Event"],
     span: "md:col-span-4",
-    image: p6
+    image: riceCeremonyImg
   },
   { 
     n: "03", 
