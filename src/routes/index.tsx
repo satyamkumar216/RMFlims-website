@@ -409,15 +409,15 @@ function Portfolio() {
   }, [activeIdx]);
 
   const scatteredPositions = [
-    "top-[-5%] md:top-[-10%] left-[-5%] rotate-[45deg] w-48 md:w-72",
-    "top-[15%] md:top-[12%] left-[15%] md:left-[25%] -rotate-12 w-36 md:w-56",
-    "top-[5%] md:top-[8%] right-[15%] md:right-[28%] rotate-[15deg] w-32 md:w-48",
-    "top-[-5%] md:top-[-10%] right-[-5%] -rotate-[45deg] w-48 md:w-72",
-    "top-[45%] md:top-[40%] left-[2%] md:left-[8%] rotate-[6deg] w-40 md:w-60",
-    "top-[55%] md:top-[42%] right-[2%] md:right-[8%] -rotate-6 w-40 md:w-60",
-    "bottom-[5%] md:bottom-[-5%] left-[10%] md:left-[15%] rotate-[30deg] w-44 md:w-64",
-    "bottom-[10%] md:bottom-[8%] left-[45%] md:left-[48%] rotate-180 w-36 md:w-48",
-    "bottom-[-5%] md:bottom-[-10%] right-[-5%] md:right-[5%] -rotate-[35deg] w-48 md:w-72",
+    "top-[2%] md:top-[5%] left-[-2%] -rotate-6 w-48 md:w-72",
+    "top-[15%] md:top-[12%] left-[18%] md:left-[22%] rotate-3 w-36 md:w-56",
+    "top-[8%] md:top-[10%] right-[20%] md:right-[26%] -rotate-2 w-32 md:w-48",
+    "top-[0%] md:top-[4%] right-[2%] md:right-[4%] rotate-6 w-48 md:w-72",
+    "top-[45%] md:top-[40%] left-[2%] md:left-[6%] rotate-2 w-40 md:w-60",
+    "top-[55%] md:top-[42%] right-[2%] md:right-[6%] -rotate-3 w-40 md:w-60",
+    "bottom-[5%] md:bottom-[2%] left-[8%] md:left-[12%] -rotate-6 w-44 md:w-64",
+    "bottom-[10%] md:bottom-[6%] left-[42%] md:left-[45%] rotate-1 w-36 md:w-48",
+    "bottom-[2%] md:bottom-[4%] right-[0%] md:right-[8%] rotate-4 w-48 md:w-72",
   ];
 
   return (
@@ -425,11 +425,14 @@ function Portfolio() {
       {/* Central CTA */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
         <h2 className="font-serif text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight text-charcoal">
-          Explore Museum
+          Explore The Gallery
         </h2>
-        <button className="mt-8 px-8 py-3 rounded-full bg-gradient-to-r from-[#d946ef] to-[#f97316] text-white font-medium text-lg tracking-wide hover:opacity-90 hover:scale-105 transition-all shadow-lg pointer-events-auto">
-          Start now
-        </button>
+        <Link 
+          to="/gallery" 
+          className="mt-8 px-8 py-3 rounded-full bg-gradient-to-r from-[#d946ef] to-[#f97316] text-white font-medium text-lg tracking-wide hover:opacity-90 hover:scale-105 transition-all shadow-lg pointer-events-auto"
+        >
+          Start Now
+        </Link>
       </div>
 
       {/* Scattered Images */}
@@ -440,12 +443,12 @@ function Portfolio() {
             <div
               key={i}
               onClick={() => setActiveIdx(i)}
-              className={`absolute ${positionClass} pointer-events-auto cursor-pointer shadow-xl hover:scale-[1.15] hover:z-30 transition-transform duration-500 ease-out`}
+              className={`absolute ${positionClass} pointer-events-auto cursor-pointer shadow-xl hover:scale-[1.15] hover:z-30 transition-transform duration-500 ease-out bg-white p-2 pb-8 md:p-3 md:pb-12 border border-black/5`}
             >
               <img
                 src={work.src}
                 alt={work.title}
-                className="w-full h-auto object-cover border-[6px] md:border-[12px] border-white shadow-sm"
+                className="w-full aspect-[4/5] object-cover"
               />
             </div>
           );
