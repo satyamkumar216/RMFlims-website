@@ -408,51 +408,53 @@ function Portfolio() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeIdx]);
 
-  const gridItems = [
-    { type: "image", ...works[0], originalIndex: 0 },
-    { type: "image", ...works[1], originalIndex: 1 },
-    { type: "image", ...works[2], originalIndex: 2 },
-    { type: "image", ...works[3], originalIndex: 3 },
-    { type: "image", ...works[4], originalIndex: 4 },
-    { type: "image", ...works[5], originalIndex: 5 },
-    { type: "image", ...works[6], originalIndex: 6 },
-    { type: "center-card" },
-    { type: "image", ...works[7], originalIndex: 7 },
-    { type: "image", ...works[8], originalIndex: 8 },
-    { type: "image", ...works[9], originalIndex: 9 },
-    { type: "image", ...works[10], originalIndex: 10 },
-    { type: "image", ...works[11], originalIndex: 11 },
-    { type: "image", ...works[12], originalIndex: 12 },
-    { type: "image", ...works[13], originalIndex: 13 },
+  const scatteredPositions = [
+    "top-[2%] md:top-[5%] left-[-2%] -rotate-6 w-48 md:w-72",
+    "top-[15%] md:top-[12%] left-[18%] md:left-[22%] rotate-3 w-36 md:w-56",
+    "top-[8%] md:top-[10%] right-[20%] md:right-[26%] -rotate-2 w-32 md:w-48",
+    "top-[0%] md:top-[4%] right-[2%] md:right-[4%] rotate-6 w-48 md:w-72",
+    "top-[45%] md:top-[40%] left-[2%] md:left-[6%] rotate-2 w-40 md:w-60",
+    "top-[55%] md:top-[42%] right-[2%] md:right-[6%] -rotate-3 w-40 md:w-60",
+    "bottom-[5%] md:bottom-[2%] left-[8%] md:left-[12%] -rotate-6 w-44 md:w-64",
+    "bottom-[10%] md:bottom-[6%] left-[42%] md:left-[45%] rotate-1 w-36 md:w-48",
+    "bottom-[2%] md:bottom-[4%] right-[0%] md:right-[8%] rotate-4 w-48 md:w-72",
   ];
 
   return (
-    <section id="gallery" className="relative px-4 py-12 md:px-12 md:py-40">
-      <div className="mx-auto max-w-[1500px]">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-6">
-          {gridItems.map((item, i) => {
-            if (item.type === "center-card") {
-              return <CenterCard key="center-card" />;
-            }
-
-            const portfolioItem = item as { originalIndex: number; src: string; title: string; meta: string; w: number; h: number; type: string; };
-
-            return (
-              <PortfolioItem
-                key={i}
-                src={portfolioItem.src}
-                title={portfolioItem.title}
-                meta={portfolioItem.meta}
-                width={portfolioItem.w}
-                height={portfolioItem.h}
-                speed={0.05 + (i % 3) * 0.03}
-                className="aspect-[4/5]"
-                onClick={() => setActiveIdx(portfolioItem.originalIndex)}
-              />
-            );
-          })}
-        </div>
+    <section id="gallery" className="relative w-full min-h-[100vh] md:min-h-[120vh] overflow-hidden bg-background py-20">
+      {/* Central CTA */}
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
+        <h2 className="font-serif text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight text-black">
+          Explore The Gallery
+        </h2>
+        <Link 
+          to="/gallery" 
+          className="mt-8 px-8 py-3 rounded-full bg-gradient-to-r from-[#d946ef] to-[#f97316] text-white font-medium text-lg tracking-wide hover:opacity-90 hover:scale-105 transition-all shadow-lg pointer-events-auto"
+        >
+          Start Now
+        </Link>
       </div>
+
+      {/* Scattered Images */}
+      <div className="absolute inset-0 pointer-events-none z-10">
+        {works.slice(0, 9).map((work, i) => {
+          const positionClass = scatteredPositions[i % scatteredPositions.length];
+          return (
+            <div
+              key={i}
+              onClick={() => setActiveIdx(i)}
+              className={`absolute ${positionClass} pointer-events-auto cursor-pointer shadow-xl hover:scale-[1.15] hover:z-30 transition-transform duration-500 ease-out bg-white p-2 pb-8 md:p-3 md:pb-12 border border-black/5`}
+            >
+              <img
+                src={work.src}
+                alt={work.title}
+                className="w-full aspect-[4/5] object-cover"
+              />
+            </div>
+          );
+        })}
+      </div>
+
 
       {/* Modern Lightbox Photo Preview Modal */}
       {activeIdx !== null && (
