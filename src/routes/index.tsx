@@ -128,12 +128,12 @@ function Hero() {
         />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,oklch(0.18_0.005_60/0.35)_100%)]" />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
-          <h1 className="hero-breathe font-display text-[clamp(24px,7vw,48px)] md:text-[8.5vw] font-medium leading-[0.8] tracking-tight text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]">
+          <h1 className="hero-breathe font-display text-[clamp(2.2rem,11vw,5rem)] md:text-[8.5vw] font-medium leading-[0.8] tracking-tight text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]">
             <MaskReveal delay={150}>ROUNAKMANNA</MaskReveal>
           </h1>
           <div className="relative -mt-2 md:-mt-[4vw] flex w-full items-center justify-center gap-4 md:gap-8 z-10 px-4">
             <span className="h-px flex-1 max-w-[15vw] md:max-w-[25vw] bg-foreground/60" />
-            <span className="films-in font-display text-[clamp(20px,6vw,40px)] md:text-[6.5vw] font-medium italic tracking-[0.18em] text-brand drop-shadow-[0_2px_12px_rgba(0,0,0,0.3)]">
+            <span className="films-in font-display text-[clamp(1.2rem,5vw,2.5rem)] md:text-[6.5vw] font-medium italic tracking-[0.08em] md:tracking-[0.18em] text-brand drop-shadow-[0_2px_12px_rgba(0,0,0,0.3)]">
               FILMS
             </span>
             <span className="h-px flex-1 max-w-[15vw] md:max-w-[25vw] bg-foreground/60" />
