@@ -8,31 +8,13 @@ export const Route = createFileRoute("/gallery")({
   component: GalleryPage,
 });
 
-const imageImports = import.meta.glob('@/assets/gallery/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+import galleryManifest from "@/data/gallery-manifest.json";
 
-const galleryItems = Object.keys(imageImports).map((path, index) => {
-  const src = imageImports[path];
-  const parts = path.split('/');
-  const filenameWithExt = parts.pop() || '';
-  const folder = parts.pop() || 'Uncategorized';
-  
-  const category = folder.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-  const title = filenameWithExt.split('.')[0].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+// We can sort them randomly or by ID if needed. The manifest provides id, src, title, category, year, aspect.
+const galleryItems = galleryManifest;
 
-  const aspects = ["aspect-[4/5] md:col-span-1", "aspect-[16/10] md:col-span-2", "aspect-square md:col-span-1", "aspect-[3/4] md:col-span-1"];
-  const aspect = aspects[index % aspects.length];
-
-  return {
-    id: index + 1,
-    src,
-    title,
-    category,
-    year: new Date().getFullYear().toString(),
-    aspect
-  };
-});
-
-const uniqueCategories = ["All", ...Array.from(new Set(galleryItems.map(item => item.category)))];
+// Define specific order for the tabs
+const uniqueCategories = ["All", "Wedding", "Bridal", "Haldi", "Reception", "Rice Ceremony", "Podcast Reel", "Portfolio"];
 
 function GalleryPage() {
   const [filter, setFilter] = useState("All");
@@ -105,19 +87,32 @@ function GalleryPage() {
           ))}
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-8 auto-rows-fr">
+        {/* Gallery Masonry Grid */}
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
+          {/* Inject Category Tile if not "All" */}
+          {filter !== "All" && (
+            <div className="break-inside-avoid mb-4 md:mb-6">
+              <div className="flex flex-col items-center justify-center p-6 md:p-8 bg-charcoal text-foreground rounded-[12px] md:rounded-2xl shadow-sm aspect-square text-center border border-brand/15 paper-grain transition-all duration-300 hover:border-brand/40 hover:shadow-md">
+                <span className="text-[10px] uppercase tracking-[0.4em] text-foreground/45 mb-2">— Category</span>
+                <h3 className="font-sans text-2xl md:text-3xl font-extrabold tracking-[0.12em] text-foreground uppercase leading-none mt-2">
+                  {filter}
+                </h3>
+                <span className="h-1 w-1 rounded-full bg-brand mt-6" />
+              </div>
+            </div>
+          )}
+
           {filteredItems.map((item, index) => (
             <div
               key={item.id}
               onClick={() => setActiveIdx(index)}
-              className={`group relative overflow-hidden bg-charcoal rounded-[12px] md:rounded-2xl cursor-pointer ${item.aspect} shadow-md transition-all duration-700 hover:shadow-xl`}
+              className={`break-inside-avoid mb-4 md:mb-6 group relative overflow-hidden bg-charcoal rounded-[12px] md:rounded-2xl cursor-pointer shadow-md transition-all duration-700 hover:shadow-xl`}
             >
               <img
                 src={item.src}
                 alt={item.title}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4 md:p-6" />
               <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500">

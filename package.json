@@ -4,7 +4,10 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "manifest": "node scripts/generate-manifests.js",
+    "predev": "npm run manifest",
     "dev": "vite dev",
+    "prebuild": "npm run manifest",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",

@@ -379,18 +379,13 @@ function Services() {
 }
 
 /* ---------------- PORTFOLIO ---------------- */
-const imageImports = import.meta.glob('@/assets/gallery/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+import frontPageManifest from "@/data/front-page-manifest.json";
 
-const dynamicWorks = Object.keys(imageImports).map((path, i) => {
-  const parts = path.split('/');
-  const filename = parts.pop() || '';
-  const folder = parts.pop() || 'Uncategorized';
-  const category = folder.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-  const title = filename.split('.')[0].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+const dynamicWorks = frontPageManifest.map((item, i) => {
   return {
-    src: imageImports[path],
-    title,
-    meta: `${category} · ${new Date().getFullYear()}`,
+    src: item.src,
+    title: item.title,
+    meta: `Front Page · ${new Date().getFullYear()}`,
     w: i % 2 === 0 ? 1024 : 1600,
     h: i % 3 === 0 ? 1280 : 1024,
   };

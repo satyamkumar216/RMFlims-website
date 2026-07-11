@@ -1,0 +1,106 @@
+[
+  {
+    "id": 1,
+    "src": "/gallery/our-work/bridal/PYM_3083.JPG",
+    "title": "PYM_3083",
+    "category": "Bridal",
+    "year": "2026",
+    "aspect": "aspect-[4/5] md:col-span-1"
+  },
+  {
+    "id": 2,
+    "src": "/gallery/our-work/bridal/PYM_3108.JPG",
+    "title": "PYM_3108",
+    "category": "Bridal",
+    "year": "2026",
+    "aspect": "aspect-[16/10] md:col-span-2"
+  },
+  {
+    "id": 3,
+    "src": "/gallery/our-work/bridal/PYM_3109 copy.jpg",
+    "title": "PYM_3109 Copy",
+    "category": "Bridal",
+    "year": "2026",
+    "aspect": "aspect-square md:col-span-1"
+  },
+  {
+    "id": 4,
+    "src": "/gallery/our-work/bridal/hero-bride.jpg",
+    "title": "Hero Bride",
+    "category": "Bridal",
+    "year": "2026",
+    "aspect": "aspect-[3/4] md:col-span-1"
+  },
+  {
+    "id": 5,
+    "src": "/gallery/our-work/bridal/portfolio-4.jpg",
+    "title": "Portfolio 4",
+    "category": "Bridal",
+    "year": "2026",
+    "aspect": "aspect-[4/5] md:col-span-1"
+  },
+  {
+    "id": 6,
+    "src": "/gallery/our-work/haldi/PYM_1468.JPG",
+    "title": "PYM_1468",
+    "category": "Haldi",
+    "year": "2026",
+    "aspect": "aspect-[16/10] md:col-span-2"
+  },
+  {
+    "id": 7,
+    "src": "/gallery/our-work/haldi/PYM_1471.JPG",
+    "title": "PYM_1471",
+    "category": "Haldi",
+    "year": "2026",
+    "aspect": "aspect-square md:col-span-1"
+  },
+  {
+    "id": 8,
+    "src": "/gallery/our-work/portfolio/PYM_3083.JPG",
+    "title": "PYM_3083",
+    "category": "Portfolio",
+    "year": "2026",
+    "aspect": "aspect-[3/4] md:col-span-1"
+  },
+  {
+    "id": 9,
+    "src": "/gallery/our-work/rice-ceremony/PTM_3590.JPG",
+    "title": "PTM_3590",
+    "category": "Rice Ceremony",
+    "year": "2026",
+    "aspect": "aspect-[4/5] md:col-span-1"
+  },
+  {
+    "id": 10,
+    "src": "/gallery/our-work/wedding/PYM_3082.JPG",
+    "title": "PYM_3082",
+    "category": "Wedding",
+    "year": "2026",
+    "aspect": "aspect-[16/10] md:col-span-2"
+  },
+  {
+    "id": 11,
+    "src": "/gallery/our-work/wedding/PYM_3111.JPG",
+    "title": "PYM_3111",
+    "category": "Wedding",
+    "year": "2026",
+    "aspect": "aspect-square md:col-span-1"
+  },
+  {
+    "id": 12,
+    "src": "/gallery/our-work/wedding/PYM_3143.JPG",
+    "title": "PYM_3143",
+    "category": "Wedding",
+    "year": "2026",
+    "aspect": "aspect-[3/4] md:col-span-1"
+  },
+  {
+    "id": 13,
+    "src": "/gallery/our-work/wedding/WeddingFlims.JPG",
+    "title": "WeddingFlims",
+    "category": "Wedding",
+    "year": "2026",
+    "aspect": "aspect-[4/5] md:col-span-1"
+  }
+]
