@@ -397,7 +397,7 @@ const dynamicWorks = Object.keys(imageImports).map((path, i) => {
 });
 
 // Safely generate 14 items for the layout (repeating if we have fewer than 14 photos currently)
-const works = Array.from({ length: 14 }).map((_, i) => dynamicWorks[i % dynamicWorks.length] || { src: p1, title: "Placeholder", meta: "", w: 1024, h: 1024 });
+const works = Array.from({ length: 14 }).map((_, i) => dynamicWorks[i % dynamicWorks.length] || { src: heroBride, title: "Placeholder", meta: "", w: 1024, h: 1024 });
 
 function Portfolio() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
