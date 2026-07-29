@@ -542,8 +542,9 @@ function Contact() {
       return
     }
 
-    if (formData.phone.replace(/\D/g, '').length < 10) {
-      setErrorMsg('Please enter a valid phone number with at least 10 digits.')
+    const phoneRegex = /^\+?[\d\s-]{10,}$/;
+    if (!phoneRegex.test(formData.phone.trim())) {
+      setErrorMsg('Please enter a valid phone number (digits, spaces, hyphens, and optional + only).')
       return
     }
 
