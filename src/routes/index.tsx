@@ -525,8 +525,25 @@ function Contact() {
     setErrorMsg(null)
 
     // Basic validation
-    if (!formData.name.trim() || !formData.email.trim()) {
-      setErrorMsg('Please fill in at least your name and email.')
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.phone.trim() ||
+      !formData.date.trim() ||
+      !formData.city.trim() ||
+      !formData.brief.trim()
+    ) {
+      setErrorMsg('Please fill in all the fields before submitting.')
+      return
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      setErrorMsg('Please enter a valid email address.')
+      return
+    }
+
+    if (formData.phone.replace(/\D/g, '').length < 10) {
+      setErrorMsg('Please enter a valid phone number with at least 10 digits.')
       return
     }
 
